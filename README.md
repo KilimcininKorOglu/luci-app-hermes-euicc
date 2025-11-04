@@ -4,17 +4,21 @@
 
 **luci-app-hermes-euicc** is a LuCI web interface for OpenWrt that enables comprehensive management of eSIM profiles on compatible cellular modules. The application uses **hermes-euicc** (Local Profile Agent Client) to communicate with eSIM modules and provides an intuitive user interface with the following features:
 
-- Monitor status of eSIM modules
-- Download profiles via QR codes or manual entry
-- Manage existing profiles (enable/disable/delete/rename)
-- Configure Hermes eUICC backend and modem reboot methods (AT, QMI, MBIM, or custom commands)
-- View and process notifications for status and operations
-- Test connectivity before managing eSIM profiles
+- **Profile Management**: List, enable, disable, delete, and rename eSIM profiles
+- **Profile Download**: Download new profiles via QR code scanning or manual entry
+- **SM-DS Discovery**: One-click profile discovery and automatic download from SM-DS servers
+- **Notification Management**: Process and remove profile-related notifications
+- **Multi-Driver Support**: Compatible with AT, QMI, and MBIM APDU communication drivers
+- **Chip Information**: Display detailed chip information including storage, capabilities, and versions
+- **Dark Mode**: Full dark mode support for better visibility
+- **Connectivity Testing**: Check internet connectivity before performing eSIM operations
+- **Flexible Modem Reboot**: Configure modem reboot methods (AT commands, QMI, MBIM, or custom commands)
 
 ## Requirements
 
 - OpenWrt with LuCI interface
-- Required packages: `hermes-euicc`, `uqmi`, `mbim-utils`, `coreutils-timeout`
+- **Required packages**: `luci-base`, `coreutils`, `coreutils-timeout`, `uqmi`, `mbim-utils`
+- **Recommended package**: `hermes-euicc` (the eSIM management engine)
 - Cellular module with eSIM support (physical or embedded)
 - Internet connection (required for profile download and deletion)
 
