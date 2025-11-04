@@ -1,6 +1,6 @@
 # hermes-euicc.pot - POT Translation Template
-# Copyright (C) 2025
-# This file is distributed under the same license as the luci-app-hermes-euicc package.
+# Copyright (C) 2025 Kerem Gök <k@keremgok.tr>
+# This file is distributed under the MIT License.
 #
 msgid ""
 msgstr ""
