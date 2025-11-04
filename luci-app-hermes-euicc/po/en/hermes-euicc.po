@@ -556,3 +556,66 @@ msgstr "Custom - Manual Entry"
 
 msgid "Custom"
 msgstr "Custom"
+
+msgid "Failed to load chip information"
+msgstr "Failed to load chip information"
+
+msgid "Failed to parse response"
+msgstr "Failed to parse response"
+
+msgid "Failed to load chip information (HTTP "
+msgstr "Failed to load chip information (HTTP "
+
+msgid "Storage Information"
+msgstr "Storage Information"
+
+msgid "Free Storage:"
+msgstr "Free Storage:"
+
+msgid "Free RAM:"
+msgstr "Free RAM:"
+
+msgid "Installed Apps:"
+msgstr "Installed Apps:"
+
+msgid "Capabilities"
+msgstr "Capabilities"
+
+msgid "Version Information"
+msgstr "Version Information"
+
+msgid "Profile Version:"
+msgstr "Profile Version:"
+
+msgid "SGP.22 Version:"
+msgstr "SGP.22 Version:"
+
+msgid "Firmware:"
+msgstr "Firmware:"
+
+msgid "GlobalPlatform:"
+msgstr "GlobalPlatform:"
+
+msgid "Used"
+msgstr "Used"
+
+msgid "Contactless Support"
+msgstr "Contactless Support"
+
+msgid "USIM Support"
+msgstr "USIM Support"
+
+msgid "ISIM Support"
+msgstr "ISIM Support"
+
+msgid "JavaCard Support"
+msgstr "JavaCard Support"
+
+msgid "Multiple USIM Support"
+msgstr "Multiple USIM Support"
+
+msgid "Generic Bootstrapping Architecture"
+msgstr "Generic Bootstrapping Architecture"
+
+msgid "BER-TLV Support"
+msgstr "BER-TLV Support"

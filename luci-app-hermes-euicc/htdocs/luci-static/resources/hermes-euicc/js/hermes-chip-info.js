@@ -37,13 +37,13 @@ function loadChipInfo() {
                             contentEl.style.display = 'block';
                         }
                     } else {
-                        showChipInfoError(response.error || 'Failed to load chip information');
+                        showChipInfoError(response.error || _('Failed to load chip information'));
                     }
                 } catch (e) {
-                    showChipInfoError('Failed to parse response');
+                    showChipInfoError(_('Failed to parse response'));
                 }
             } else {
-                showChipInfoError('Failed to load chip information (HTTP ' + xhr.status + ')');
+                showChipInfoError(_('Failed to load chip information (HTTP ') + xhr.status + ')');
             }
         }
     };
@@ -65,9 +65,9 @@ function displayChipInfo(info) {
         var svnEl = document.getElementById('esim-svn');
         var firmwareEl = document.getElementById('esim-firmware');
 
-        if (profileVersionEl) profileVersionEl.textContent = info.euicc_info2.profile_version || 'Not available';
-        if (svnEl) svnEl.textContent = info.euicc_info2.svn || 'Not available';
-        if (firmwareEl) firmwareEl.textContent = info.euicc_info2.euicc_firmware_ver || 'Not available';
+        if (profileVersionEl) profileVersionEl.textContent = info.euicc_info2.profile_version || _('Not available');
+        if (svnEl) svnEl.textContent = info.euicc_info2.svn || _('Not available');
+        if (firmwareEl) firmwareEl.textContent = info.euicc_info2.euicc_firmware_ver || _('Not available');
     }
 
     // Update Memory Information with ext_card_resource
@@ -80,9 +80,9 @@ function displayChipInfo(info) {
         var vMem = info.euicc_info2.ext_card_resource.free_volatile_memory;
         var apps = info.euicc_info2.ext_card_resource.installed_application;
 
-        if (nvMemEl) nvMemEl.textContent = (nvMem === 0 || nvMem === undefined) ? 'Not available' : nvMem + ' bytes';
-        if (vMemEl) vMemEl.textContent = (vMem === 0 || vMem === undefined) ? 'Not available' : vMem + ' bytes';
-        if (appsEl) appsEl.textContent = (apps === 0 || apps === undefined) ? 'Not available' : apps;
+        if (nvMemEl) nvMemEl.textContent = (nvMem === 0 || nvMem === undefined) ? _('Not available') : nvMem + ' bytes';
+        if (vMemEl) vMemEl.textContent = (vMem === 0 || vMem === undefined) ? _('Not available') : vMem + ' bytes';
+        if (appsEl) appsEl.textContent = (apps === 0 || apps === undefined) ? _('Not available') : apps;
     }
 
     // Display storage information
@@ -91,18 +91,18 @@ function displayChipInfo(info) {
         if (storageEl) {
             storageEl.innerHTML =
                 '<div class="chip-info-card">' +
-                '<h4>Storage Information</h4>' +
+                '<h4>' + _('Storage Information') + '</h4>' +
                 '<div class="storage-item">' +
-                '<span class="storage-label">Free Storage:</span> ' +
+                '<span class="storage-label">' + _('Free Storage:') + '</span> ' +
                 '<span class="storage-value">' + info.storage_formatted.free_nvm_mb + ' MB (' +
                 info.storage_formatted.free_nvm_kb.toLocaleString() + ' KB)</span>' +
                 '</div>' +
                 '<div class="storage-item">' +
-                '<span class="storage-label">Free RAM:</span> ' +
+                '<span class="storage-label">' + _('Free RAM:') + '</span> ' +
                 '<span class="storage-value">' + info.storage_formatted.free_ram_kb.toLocaleString() + ' KB</span>' +
                 '</div>' +
                 '<div class="storage-item">' +
-                '<span class="storage-label">Installed Apps:</span> ' +
+                '<span class="storage-label">' + _('Installed Apps:') + '</span> ' +
                 '<span class="storage-value">' + info.storage_formatted.installed_apps + '</span>' +
                 '</div>' +
                 createStorageBar(info.storage_formatted.free_nvm_bytes) +
@@ -114,7 +114,7 @@ function displayChipInfo(info) {
     if (info.euicc_info2 && info.euicc_info2.uicc_capability) {
         var capEl = document.getElementById('capabilities-info');
         if (capEl) {
-            var capHtml = '<div class="chip-info-card"><h4>Capabilities</h4><ul class="capability-list">';
+            var capHtml = '<div class="chip-info-card"><h4>' + _('Capabilities') + '</h4><ul class="capability-list">';
             info.euicc_info2.uicc_capability.forEach(function (cap) {
                 capHtml += '<li>' + formatCapability(cap) + '</li>';
             });
@@ -129,15 +129,15 @@ function displayChipInfo(info) {
         if (versionEl) {
             versionEl.innerHTML =
                 '<div class="chip-info-card">' +
-                '<h4>Version Information</h4>' +
-                '<div class="version-item"><span class="version-label">Profile Version:</span> ' +
-                (info.euicc_info2.profile_version || 'Not available') + '</div>' +
-                '<div class="version-item"><span class="version-label">SGP.22 Version:</span> ' +
-                (info.euicc_info2.svn || 'Not available') + '</div>' +
-                '<div class="version-item"><span class="version-label">Firmware:</span> ' +
-                (info.euicc_info2.euicc_firmware_ver || 'Not available') + '</div>' +
-                '<div class="version-item"><span class="version-label">GlobalPlatform:</span> ' +
-                (info.euicc_info2.global_platform_version || 'Not available') + '</div>' +
+                '<h4>' + _('Version Information') + '</h4>' +
+                '<div class="version-item"><span class="version-label">' + _('Profile Version:') + '</span> ' +
+                (info.euicc_info2.profile_version || _('Not available')) + '</div>' +
+                '<div class="version-item"><span class="version-label">' + _('SGP.22 Version:') + '</span> ' +
+                (info.euicc_info2.svn || _('Not available')) + '</div>' +
+                '<div class="version-item"><span class="version-label">' + _('Firmware:') + '</span> ' +
+                (info.euicc_info2.euicc_firmware_ver || _('Not available')) + '</div>' +
+                '<div class="version-item"><span class="version-label">' + _('GlobalPlatform:') + '</span> ' +
+                (info.euicc_info2.global_platform_version || _('Not available')) + '</div>' +
                 '</div>';
         }
     }
@@ -172,18 +172,18 @@ function createStorageBar(freeBytes) {
     return '<div class="storage-progress">' +
         '<div class="' + barClass + '" style="width: ' + usedPercent.toFixed(1) + '%"></div>' +
         '</div>' +
-        '<div class="storage-percent">' + usedPercent.toFixed(1) + '% Used</div>';
+        '<div class="storage-percent">' + usedPercent.toFixed(1) + '% ' + _('Used') + '</div>';
 }
 
 function formatCapability(cap) {
     var capMap = {
-        'contactless': 'Contactless Support',
-        'usim': 'USIM Support',
-        'isim': 'ISIM Support',
-        'javacard': 'JavaCard Support',
-        'multipleusim': 'Multiple USIM Support',
-        'gba': 'Generic Bootstrapping Architecture',
-        'bertlv': 'BER-TLV Support'
+        'contactless': _('Contactless Support'),
+        'usim': _('USIM Support'),
+        'isim': _('ISIM Support'),
+        'javacard': _('JavaCard Support'),
+        'multipleusim': _('Multiple USIM Support'),
+        'gba': _('Generic Bootstrapping Architecture'),
+        'bertlv': _('BER-TLV Support')
     };
     return capMap[cap] || cap;
 }

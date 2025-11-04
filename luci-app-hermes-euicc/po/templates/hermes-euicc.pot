@@ -556,3 +556,66 @@ msgstr ""
 
 msgid "Custom"
 msgstr ""
+
+msgid "Failed to load chip information"
+msgstr ""
+
+msgid "Failed to parse response"
+msgstr ""
+
+msgid "Failed to load chip information (HTTP "
+msgstr ""
+
+msgid "Storage Information"
+msgstr ""
+
+msgid "Free Storage:"
+msgstr ""
+
+msgid "Free RAM:"
+msgstr ""
+
+msgid "Installed Apps:"
+msgstr ""
+
+msgid "Capabilities"
+msgstr ""
+
+msgid "Version Information"
+msgstr ""
+
+msgid "Profile Version:"
+msgstr ""
+
+msgid "SGP.22 Version:"
+msgstr ""
+
+msgid "Firmware:"
+msgstr ""
+
+msgid "GlobalPlatform:"
+msgstr ""
+
+msgid "Used"
+msgstr ""
+
+msgid "Contactless Support"
+msgstr ""
+
+msgid "USIM Support"
+msgstr ""
+
+msgid "ISIM Support"
+msgstr ""
+
+msgid "JavaCard Support"
+msgstr ""
+
+msgid "Multiple USIM Support"
+msgstr ""
+
+msgid "Generic Bootstrapping Architecture"
+msgstr ""
+
+msgid "BER-TLV Support"
+msgstr ""
