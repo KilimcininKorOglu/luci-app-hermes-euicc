@@ -5,7 +5,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=luci-app-hermes-euicc
 PKG_VERSION:=1.0.1
 PKG_RELEASE:=53
-PKG_MAINTAINER:=Kerem Gök <k@keremgok.tr>
+PKG_MAINTAINER:=Kilimcinin Kör Oğlu <k@keremgok.tr>
 PKG_LICENSE:=MIT
 
 LUCI_TITLE:=LuCI Hermes eUICC - eSIM Profile Manager

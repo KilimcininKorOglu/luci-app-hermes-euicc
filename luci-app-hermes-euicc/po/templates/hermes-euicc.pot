@@ -1,5 +1,5 @@
 # hermes-euicc.pot - POT Translation Template
-# Copyright (C) 2025 Kerem Gök <k@keremgok.tr>
+# Copyright (C) 2025 Kilimcinin Kör Oğlu <k@keremgok.tr>
 # This file is distributed under the MIT License.
 #
 msgid ""
