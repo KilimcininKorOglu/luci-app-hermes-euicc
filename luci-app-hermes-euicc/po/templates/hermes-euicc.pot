@@ -685,3 +685,9 @@ msgstr ""
 
 msgid "Failed to process notification (HTTP "
 msgstr ""
+
+msgid "Failed to load profiles"
+msgstr ""
+
+msgid "Failed to download profile (HTTP "
+msgstr ""

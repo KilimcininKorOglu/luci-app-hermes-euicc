@@ -285,7 +285,7 @@ function processAllNotificationsFromProfile() {
                     var data = JSON.parse(xhr.responseText);
 
                     if (data.success) {
-                        var successMessage = data.data && data.data.message || 'Notification process completed successfully';
+                        var successMessage = data.data && data.data.message || _('Notification process completed successfully');
                         document.getElementById('profile-notifications-success-message').textContent = successMessage;
                         var el = document.getElementById('profile-notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
 
@@ -295,18 +295,18 @@ function processAllNotificationsFromProfile() {
                             document.getElementById('esim-delete-notification-banner').style.display = 'none';
                         }, 2000);
                     } else {
-                        var errorMessage = data.error || 'Unknown error occurred';
+                        var errorMessage = data.error || _('Unknown error occurred');
                         document.getElementById('profile-notifications-error-message').textContent = errorMessage;
                         var el = document.getElementById('profile-notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     }
 
                 } catch (e) {
-                    document.getElementById('profile-notifications-error-message').textContent = 'Invalid response format';
+                    document.getElementById('profile-notifications-error-message').textContent = _('Invalid response format');
                     var el = document.getElementById('profile-notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     console.error('JSON parsing error:', e);
                 }
             } else {
-                document.getElementById('profile-notifications-error-message').textContent = 'Failed to download profile (HTTP ' + xhr.status + ')';
+                document.getElementById('profile-notifications-error-message').textContent = _('Failed to download profile (HTTP ') + xhr.status + ')';
                 var el = document.getElementById('profile-notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
@@ -335,11 +335,11 @@ function loadProfiles() {
                     // Check server for reboot state and update banner
                     checkServerRebootStatus();
                 } else {
-                    document.getElementById('profiles-error-message').textContent = data.error || 'Unknown error';
+                    document.getElementById('profiles-error-message').textContent = data.error || _('Unknown error');
                     var el = document.getElementById('profiles-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                 }
             } else {
-                document.getElementById('profiles-error-message').textContent = 'Failed to load profiles';
+                document.getElementById('profiles-error-message').textContent = _('Failed to load profiles');
                 var el = document.getElementById('profiles-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
@@ -375,7 +375,7 @@ function displayProfiles(profiles) {
         } else if (profile.service_provider_name && profile.service_provider_name.trim() !== '') {
             displayName = profile.service_provider_name;
         } else {
-            displayName = 'Unknown';
+            displayName = _('Unknown');
         }
 
         nameCell.textContent = displayName;
