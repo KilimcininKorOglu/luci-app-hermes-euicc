@@ -1,12 +1,12 @@
-# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-License-Identifier: MIT
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-hermes-euicc
 PKG_VERSION:=1.0.1
 PKG_RELEASE:=52
-PKG_MAINTAINER:=Giammarco M. <stich86@gmail.com>
-PKG_LICENSE:=AGPL-3.0-only
+PKG_MAINTAINER:=Kerem Gök <k@keremgok.tr>
+PKG_LICENSE:=MIT
 
 LUCI_TITLE:=LuCI Hermes eUICC - eSIM Profile Manager
 LUCI_DESCRIPTION:=LuCI web interface for managing eSIM profiles via Hermes eUICC Manager. \
