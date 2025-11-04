@@ -10,26 +10,26 @@ var SHOW_LOGS = false;
 var ENABLE_BULK_NOTIFICATION = false;
 
 function fetchEnableLogsConfig(callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_config'), true);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      var data = JSON.parse(xhr.responseText);
-      if (data.success && data.config) {
-        SHOW_LOGS = (data.config['hermes-euicc'].json_output == 1 || data.config['hermes-euicc'].json_output === "1");
-        ENABLE_BULK_NOTIFICATION = (data.config['hermes-euicc'].enable_bulk_notification == 1 || data.config['hermes-euicc'].enable_bulk_notification === "1");
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_config'), true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            if (data.success && data.config) {
+                SHOW_LOGS = (data.config['hermes-euicc'].json_output == 1 || data.config['hermes-euicc'].json_output === "1");
+                ENABLE_BULK_NOTIFICATION = (data.config['hermes-euicc'].enable_bulk_notification == 1 || data.config['hermes-euicc'].enable_bulk_notification === "1");
 
-        // Show/hide bulk notification actions based on config
-        var bulkActionsDiv = document.getElementById('bulk-notification-actions');
-        if (bulkActionsDiv) {
-          bulkActionsDiv.style.display = ENABLE_BULK_NOTIFICATION ? 'inline' : 'none';
+                // Show/hide bulk notification actions based on config
+                var bulkActionsDiv = document.getElementById('bulk-notification-actions');
+                if (bulkActionsDiv) {
+                    bulkActionsDiv.style.display = ENABLE_BULK_NOTIFICATION ? 'inline' : 'none';
+                }
+
+                if (callback) callback(SHOW_LOGS);
+            }
         }
-
-        if (callback) callback(SHOW_LOGS);
-      }
-    }
-  };
-  xhr.send();
+    };
+    xhr.send();
 }
 
 // ===== NOTIFICATIONS FUNCTIONS =====
@@ -38,14 +38,14 @@ function loadNotifications() {
     var el = document.getElementById('notifications-loading'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
     document.getElementById('notifications-content').style.display = 'none';
     document.getElementById('notifications-error').style.display = 'none';
-    
-    loadProfilesForLookup(function() {
+
+    loadProfilesForLookup(function () {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_notifications'), true);
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 document.getElementById('notifications-loading').style.display = 'none';
-                
+
                 if (xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
                     if (data.success) {
@@ -69,14 +69,14 @@ function loadNotifications() {
 function loadProfilesForLookup(callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_profiles'), true);
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
                 if (data.success && data.profiles) {
                     // Create lookup table ICCID -> Provider
                     profilesLookup = {};
-                    data.profiles.forEach(function(profile) {
+                    data.profiles.forEach(function (profile) {
                         if (profile.iccid) {
                             profilesLookup[profile.iccid] = profile.service_provider_name || 'Unknown Provider';
                         }
@@ -97,20 +97,20 @@ function displayNotifications(notifications) {
         var el = document.getElementById('no-notifications'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
         return;
     }
-    
+
     document.getElementById('no-notifications').style.display = 'none';
-    
-    notifications.forEach(function(notification) {
+
+    notifications.forEach(function (notification) {
         var row = document.createElement('tr');
         row.className = 'cbi-section-table-row';
-        
+
         // Sequence Number
         var seqCell = document.createElement('td');
         seqCell.className = 'cbi-section-table-cell';
         seqCell.style.fontWeight = 'bold';
         seqCell.textContent = notification.seq_number || '-';
         row.appendChild(seqCell);
-        
+
         // ICCID
         var iccidCell = document.createElement('td');
         iccidCell.className = 'cbi-section-table-cell';
@@ -118,14 +118,14 @@ function displayNotifications(notifications) {
         iccidCell.style.fontFamily = 'monospace';
         iccidCell.style.fontSize = '12px';
         row.appendChild(iccidCell);
-        
+
         // Provider (lookup from profiles)
         var providerCell = document.createElement('td');
         providerCell.className = 'cbi-section-table-cell';
         var provider = profilesLookup[notification.iccid] || 'Unknown';
         providerCell.textContent = provider;
         row.appendChild(providerCell);
-        
+
         // Operation
         var operationCell = document.createElement('td');
         operationCell.className = 'cbi-section-table-cell';
@@ -133,32 +133,32 @@ function displayNotifications(notifications) {
         var operationBadge = createOperationBadge(operation);
         operationCell.appendChild(operationBadge);
         row.appendChild(operationCell);
-        
+
         // Actions
         var actionsCell = document.createElement('td');
         actionsCell.className = 'cbi-section-table-cell';
         actionsCell.style.textAlign = 'center';
-        
+
         if (notification.seq_number) {
             // Process button
             var processBtn = document.createElement('input');
             processBtn.type = 'button';
             processBtn.className = 'cbi-button notification-action-btn process-btn';
             processBtn.value = _('Process');
-            processBtn.onclick = function() { processNotification(notification.seq_number); };
+            processBtn.onclick = function () { processNotification(notification.seq_number); };
 
             // Remove button
             var removeBtn = document.createElement('input');
             removeBtn.type = 'button';
             removeBtn.className = 'cbi-button notification-action-btn remove-btn';
             removeBtn.value = _('Remove');
-            removeBtn.onclick = function() { removeNotification(notification.seq_number); };
-            
+            removeBtn.onclick = function () { removeNotification(notification.seq_number); };
+
             actionsCell.appendChild(processBtn);
             actionsCell.appendChild(document.createTextNode(' '));
             actionsCell.appendChild(removeBtn);
         }
-        
+
         row.appendChild(actionsCell);
         tbody.appendChild(row);
     });
@@ -167,8 +167,8 @@ function displayNotifications(notifications) {
 function createOperationBadge(operation) {
     var badge = document.createElement('span');
     badge.className = 'operation-badge';
-    
-    switch(operation.toLowerCase()) {
+
+    switch (operation.toLowerCase()) {
         case 'install':
             badge.className += ' operation-install';
             badge.textContent = _('INSTALL');
@@ -189,7 +189,7 @@ function createOperationBadge(operation) {
             badge.className += ' operation-unknown';
             badge.textContent = operation.toUpperCase();
     }
-    
+
     return badge;
 }
 
@@ -198,36 +198,36 @@ function processNotification(seqNumber) {
     var originalText = btn.value;
     btn.value = _('Processing...');
     btn.disabled = true;
-    
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_notification_process'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             btn.disabled = false;
             btn.value = originalText;
-            
+
             if (xhr.status === 200) {
                 try {
-                var data = JSON.parse(xhr.responseText);
-                
-                if (data.success) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    if (data.success) {
                         if (data.success && data.data) {
                             var successMessage = data.data.message || 'Notification process completed successfully';
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
-                        
+
                             if (SHOW_LOGS && data) {
-                               showNotificationLogs('Notification #' + seqNumber, data);
+                                showNotificationLogs('Notification #' + seqNumber, data);
                             }
 
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 if (typeof loadNotifications === 'function') {
                                     loadNotifications();
                                     document.getElementById('notifications-success').style.display = 'none';
                                 }
                             }, 2000);
-                            
+
                         } else {
                             var errorMessage = '';
                             if (data.data.message) {
@@ -241,7 +241,7 @@ function processNotification(seqNumber) {
                             }
                             if (!errorMessage) {
                                 errorMessage = 'Unknown error occurred';
-                            }                                            
+                            }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
                             var el = document.getElementById('notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
@@ -277,35 +277,35 @@ function processNotification(seqNumber) {
 }
 
 function removeNotification(seqNumber) {
-    
+
     var btn = event.target;
     var originalText = btn.value;
     btn.value = _('Removing...');
     btn.disabled = true;
-    
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_notification_remove'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             btn.disabled = false;
             btn.value = originalText;
-            
+
             if (xhr.status === 200) {
                 try {
-                var data = JSON.parse(xhr.responseText);
-                
-                if (data.success) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    if (data.success) {
                         if (data.success && data.data) {
                             var successMessage = data.data.message || 'Notification process completed successfully';
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
-                        
+
                             if (SHOW_LOGS && data) {
-                               showNotificationLogs('Notification #' + seqNumber, data);
+                                showNotificationLogs('Notification #' + seqNumber, data);
                             }
 
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 if (typeof loadNotifications === 'function') {
                                     loadNotifications();
                                     document.getElementById('notifications-success').style.display = 'none';
@@ -324,7 +324,7 @@ function removeNotification(seqNumber) {
                             }
                             if (!errorMessage) {
                                 errorMessage = 'Unknown error occurred';
-                            }                                            
+                            }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
                             var el = document.getElementById('notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
@@ -364,39 +364,39 @@ function processAllNotifications() {
         alert(_('No notifications to process'));
         return;
     }
-    
+
     if (!confirm(_('Are you sure you want to process all notifications?'))) {
         return;
     }
-    
+
     var btn = event.target;
     var originalText = btn.value;
     btn.value = _('Processing...');
     btn.disabled = true;
-    
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_notification_process_all'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             btn.disabled = false;
             btn.value = originalText;
-            
+
             if (xhr.status === 200) {
                 try {
-                var data = JSON.parse(xhr.responseText);
-                
-                if (data.success) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    if (data.success) {
                         if (data.success && data.data) {
                             var successMessage = data.data.message || 'Notification process completed successfully';
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
-                        
+
                             if (SHOW_LOGS && data) {
-                               showNotificationLogs('Process All Notifications' , data);
+                                showNotificationLogs('Process All Notifications', data);
                             }
 
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 if (typeof loadNotifications === 'function') {
                                     loadNotifications();
                                     document.getElementById('notifications-success').style.display = 'none';
@@ -415,7 +415,7 @@ function processAllNotifications() {
                             }
                             if (!errorMessage) {
                                 errorMessage = 'Unknown error occurred';
-                            }                                            
+                            }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
                             var el = document.getElementById('notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
@@ -446,7 +446,7 @@ function processAllNotifications() {
                 var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
-    };                
+    };
     xhr.send();
 }
 
@@ -455,39 +455,39 @@ function processAllNotificationsAndRemove() {
         alert(_('No notifications to process'));
         return;
     }
-    
+
     if (!confirm(_('Are you sure you want to process all notifications and remove them?'))) {
         return;
     }
-    
+
     var btn = event.target;
     var originalText = btn.value;
     btn.value = _('Processing...');
     btn.disabled = true;
-    
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_notification_process_and_remove_all'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             btn.disabled = false;
             btn.value = originalText;
-            
+
             if (xhr.status === 200) {
                 try {
-                var data = JSON.parse(xhr.responseText);
-                
-                if (data.success) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    if (data.success) {
                         if (data.success && data.data) {
                             var successMessage = data.data.message || 'Notification process completed successfully';
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
-                        
+
                             if (SHOW_LOGS && data) {
-                               showNotificationLogs('Process All Notifications' , data);
+                                showNotificationLogs('Process All Notifications', data);
                             }
 
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 if (typeof loadNotifications === 'function') {
                                     loadNotifications();
                                     document.getElementById('notifications-success').style.display = 'none';
@@ -506,7 +506,7 @@ function processAllNotificationsAndRemove() {
                             }
                             if (!errorMessage) {
                                 errorMessage = 'Unknown error occurred';
-                            }                                            
+                            }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
                             var el = document.getElementById('notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
@@ -537,7 +537,7 @@ function processAllNotificationsAndRemove() {
                 var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
-    };                
+    };
     xhr.send();
 }
 
@@ -546,45 +546,45 @@ function removeAllNotifications() {
         alert(_('No notifications to remove'));
         return;
     }
-    
+
     if (!confirm(_('Are you sure you want to remove all notifications? This action cannot be undone.'))) {
         return;
     }
-    
+
     var btn = event.target;
     var originalText = btn.value;
     btn.value = _('Removing...');
     btn.disabled = true;
-    
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_notification_remove_all'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             btn.disabled = false;
             btn.value = originalText;
-            
+
             if (xhr.status === 200) {
                 try {
-                var data = JSON.parse(xhr.responseText);
-                
-                if (data.success) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    if (data.success) {
                         if (data.success && data.data) {
                             var successMessage = data.data.message || 'Notification process completed successfully';
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
-                        
+
                             if (SHOW_LOGS && data) {
-                               showNotificationLogs('Process All Notifications' , data);
+                                showNotificationLogs('Process All Notifications', data);
                             }
 
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 if (typeof loadNotifications === 'function') {
                                     loadNotifications();
                                     document.getElementById('notifications-success').style.display = 'none';
                                 }
                             }, 2000);
-                            
+
                         } else {
                             var errorMessage = '';
                             if (data.data.message) {
@@ -598,7 +598,7 @@ function removeAllNotifications() {
                             }
                             if (!errorMessage) {
                                 errorMessage = 'Unknown error occurred';
-                            }                                            
+                            }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
                             var el = document.getElementById('notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
@@ -636,21 +636,21 @@ function removeAllNotifications() {
 function showNotificationLogs(operation, dataObject) {
     var logsSection = document.getElementById('notifications-logs-section');
     var logsContent = document.getElementById('notifications-logs-content');
-    
+
     if (!logsSection || !logsContent) {
         return;
     }
-    
+
     // Show logs section
     logsSection.style.display = 'block';
-    
+
     // Create timestamp
     var timestamp = new Date().toLocaleTimeString();
     var isSuccess = operation.indexOf('Error') === -1;
     var isError = operation.indexOf('Error') !== -1;
-    
+
     var headerColor = isSuccess ? '#28a745' : '#dc3545';
-    
+
     // Create div for the operation
     var headerDiv = document.createElement('div');
     headerDiv.style.color = headerColor;
@@ -658,7 +658,7 @@ function showNotificationLogs(operation, dataObject) {
     headerDiv.style.marginBottom = '5px';
     headerDiv.style.paddingBottom = '5px';
     headerDiv.textContent = '[' + timestamp + '] ' + operation;
-    
+
     // Create div for JSON output
     var contentDiv = document.createElement('div');
     contentDiv.style.marginBottom = '15px';
@@ -667,16 +667,16 @@ function showNotificationLogs(operation, dataObject) {
     contentDiv.style.borderRadius = '3px';
     contentDiv.style.wordBreak = 'break-all';
     contentDiv.style.overflowWrap = 'break-word';
-    
+
     // Format the data object
     var formattedOutput = '';
     try {
         if (typeof dataObject === 'string') {
             var lines = dataObject.split('\n');
-            lines.forEach(function(line) {
+            lines.forEach(function (line) {
                 if (line.trim().startsWith('{')) {
                     var jsonObj = JSON.parse(line);
-                    var jsonStr = JSON.stringify(jsonObj, function(key, value) {
+                    var jsonStr = JSON.stringify(jsonObj, function (key, value) {
                         if (typeof value === 'string' && value.length > 100) {
                             return value.substring(0, 100) + '...[truncated]';
                         }
@@ -688,7 +688,7 @@ function showNotificationLogs(operation, dataObject) {
                 }
             });
         } else if (typeof dataObject === 'object' && dataObject !== null) {
-            formattedOutput = JSON.stringify(dataObject, function(key, value) {
+            formattedOutput = JSON.stringify(dataObject, function (key, value) {
                 if (typeof value === 'string' && value.length > 100) {
                     return value.substring(0, 100) + '...[truncated]';
                 }
@@ -703,9 +703,9 @@ function showNotificationLogs(operation, dataObject) {
             formattedOutput = formattedOutput.substring(0, 500) + '...[truncated]';
         }
     }
-    
+
     contentDiv.textContent = formattedOutput;
-    
+
     logsContent.appendChild(headerDiv);
     logsContent.appendChild(contentDiv);
 
@@ -723,45 +723,45 @@ function createNotificationLogsSection() {
     if (!notificationsError) {
         return;
     }
-    
+
     var logsSection = document.createElement('div');
     logsSection.id = 'notifications-logs-section';
     logsSection.style.marginTop = '30px';
     logsSection.style.display = 'none';
-    
+
     var fieldset = document.createElement('fieldset');
     fieldset.className = 'cbi-section';
-    
+
     var legend = document.createElement('legend');
     legend.textContent = _('Output Logs');
     fieldset.appendChild(legend);
-    
+
     var sectionNode = document.createElement('div');
     sectionNode.className = 'cbi-section-node';
-    
+
     var logsContent = document.createElement('div');
     logsContent.id = 'notifications-logs-content';
     logsContent.style.cssText = 'background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; padding: 10px; font-family: monospace; font-size: 11px; white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow-y: auto; overflow-x: hidden; width: calc(100% - 22px); max-width: 100%;';
-    
+
     var buttonDiv = document.createElement('div');
     buttonDiv.style.marginTop = '10px';
     buttonDiv.style.textAlign = 'right';
-    
+
     var clearButton = document.createElement('button');
     clearButton.type = 'button';
     clearButton.className = 'cbi-button cbi-button-reset';
     clearButton.textContent = _('Clear Logs');
     clearButton.onclick = clearNotificationLogs;
-    
+
     buttonDiv.appendChild(clearButton);
     sectionNode.appendChild(logsContent);
     sectionNode.appendChild(buttonDiv);
     fieldset.appendChild(sectionNode);
     logsSection.appendChild(fieldset);
-    
+
     notificationsError.parentNode.insertBefore(logsSection, notificationsError.nextSibling);
 }
 
 // Load logs config
-fetchEnableLogsConfig(function(enableLogs) {
+fetchEnableLogsConfig(function (enableLogs) {
 });

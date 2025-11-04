@@ -6,7 +6,7 @@ Version: 1.0.0
 function loadESIMInfo() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_status'), true);
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             document.getElementById('esim-info-error').style.display = 'none';
             document.getElementById('esim-info-content').style.display = 'none';

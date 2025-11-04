@@ -53,7 +53,10 @@
                 <div class="cbi-value" id="at-device-setting">
                     <label class="cbi-value-title"><%:AT Device%></label>
                     <div class="cbi-value-field">
-                        <input type="text" id="at_device" name="at_device" class="cbi-input-text" placeholder="/dev/ttyUSB3" />
+                        <select id="at_device" name="at_device" class="cbi-input-select" onchange="onDeviceSelectChange(this)">
+                            <option value=""><%:Loading devices...%></option>
+                        </select>
+                        <input type="text" id="at_device_custom" name="at_device_custom" class="cbi-input-text" placeholder="/dev/ttyUSB3" style="display:none; margin-top:5px;" />
                         <div class="file-help"><%:Serial port device used by AT APDU backend%></div>
                     </div>
                 </div>
@@ -61,7 +64,10 @@
                 <div class="cbi-value" id="qmi-device-setting">
                     <label class="cbi-value-title"><%:QMI Device%></label>
                     <div class="cbi-value-field">
-                        <input type="text" id="qmi_device" name="qmi_device" class="cbi-input-text" placeholder="/dev/cdc-wdm0" />
+                        <select id="qmi_device" name="qmi_device" class="cbi-input-select" onchange="onDeviceSelectChange(this)">
+                            <option value=""><%:Loading devices...%></option>
+                        </select>
+                        <input type="text" id="qmi_device_custom" name="qmi_device_custom" class="cbi-input-text" placeholder="/dev/cdc-wdm0" style="display:none; margin-top:5px;" />
                         <div class="file-help"><%:QMI device used by QMI APDU backend%></div>
                     </div>
                 </div>
@@ -80,7 +86,10 @@
                 <div class="cbi-value" id="mbim-device-setting">
                     <label class="cbi-value-title"><%:MBIM Device%></label>
                     <div class="cbi-value-field">
-                        <input type="text" id="mbim_device" name="mbim_device" class="cbi-input-text" placeholder="/dev/cdc-wdm0" />
+                        <select id="mbim_device" name="mbim_device" class="cbi-input-select" onchange="onDeviceSelectChange(this)">
+                            <option value=""><%:Loading devices...%></option>
+                        </select>
+                        <input type="text" id="mbim_device_custom" name="mbim_device_custom" class="cbi-input-text" placeholder="/dev/cdc-wdm0" style="display:none; margin-top:5px;" />
                         <div class="file-help"><%:MBIM device used by MBIM APDU backend%></div>
                     </div>
                 </div>
@@ -125,7 +134,10 @@
 		        <div class="cbi-value" id="at-reboot-port-setting">
                     <label class="cbi-value-title"><%:AT Device for Reboot%></label>
                     <div class="cbi-value-field">
-                        <input type="text" id="reboot_at_device" name="reboot_at_device" class="cbi-input-text" placeholder="/dev/ttyUSB3" />
+                        <select id="reboot_at_device" name="reboot_at_device" class="cbi-input-select" onchange="onDeviceSelectChange(this)">
+                            <option value=""><%:Loading devices...%></option>
+                        </select>
+                        <input type="text" id="reboot_at_device_custom" name="reboot_at_device_custom" class="cbi-input-text" placeholder="/dev/ttyUSB3" style="display:none; margin-top:5px;" />
                         <div class="file-help"><%:Serial port device used for SIM power cycle%></div>
                     </div>
                 </div>
@@ -133,7 +145,10 @@
                 <div class="cbi-value" id="qmi-reboot-setting">
                     <label class="cbi-value-title"><%:QMI Device for Reboot%></label>
                     <div class="cbi-value-field">
-                        <input type="text" id="reboot_qmi_device" name="reboot_qmi_device" class="cbi-input-text" placeholder="/dev/cdc-wdm0" />
+                        <select id="reboot_qmi_device" name="reboot_qmi_device" class="cbi-input-select" onchange="onDeviceSelectChange(this)">
+                            <option value=""><%:Loading devices...%></option>
+                        </select>
+                        <input type="text" id="reboot_qmi_device_custom" name="reboot_qmi_device_custom" class="cbi-input-text" placeholder="/dev/cdc-wdm0" style="display:none; margin-top:5px;" />
                         <div class="file-help"><%:QMI device to use for SIM power cycle%></div>
                     </div>
                 </div>
@@ -152,7 +167,10 @@
                 <div class="cbi-value" id="mbim-reboot-setting">
                     <label class="cbi-value-title"><%:MBIM Device for Reboot%></label>
                     <div class="cbi-value-field">
-                        <input type="text" id="reboot_mbim_device" name="reboot_mbim_device" class="cbi-input-text" placeholder="/dev/cdc-wdm0" />
+                        <select id="reboot_mbim_device" name="reboot_mbim_device" class="cbi-input-select" onchange="onDeviceSelectChange(this)">
+                            <option value=""><%:Loading devices...%></option>
+                        </select>
+                        <input type="text" id="reboot_mbim_device_custom" name="reboot_mbim_device_custom" class="cbi-input-text" placeholder="/dev/cdc-wdm0" style="display:none; margin-top:5px;" />
                         <div class="file-help"><%:MBIM device to use for UICC reset%></div>
                     </div>
                 </div>

@@ -4,14 +4,125 @@ Version: 1.0.0
 */
 
 var configLoaded = false;
+var availableDevices = {
+    at_devices: [],
+    qmi_devices: []
+};
+
 function loadConfigIfNeeded() {
     if (!configLoaded) {
         configLoaded = true;
         loadConfig();
+        loadAvailableDevices();
     }
 }
 
 var currentConfig = {};
+
+// Load available devices from /dev
+function loadAvailableDevices() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_list_devices'), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            if (data.success) {
+                availableDevices.at_devices = data.at_devices || [];
+                availableDevices.qmi_devices = data.qmi_devices || [];
+                populateDeviceDropdowns();
+            }
+        }
+    };
+    xhr.send();
+}
+
+// Populate all device dropdowns with available devices
+function populateDeviceDropdowns() {
+    // AT devices
+    populateDeviceSelect('at_device', availableDevices.at_devices, '/dev/ttyUSB3');
+    populateDeviceSelect('reboot_at_device', availableDevices.at_devices, '/dev/ttyUSB3');
+
+    // QMI/MBIM devices
+    populateDeviceSelect('qmi_device', availableDevices.qmi_devices, '/dev/cdc-wdm0');
+    populateDeviceSelect('mbim_device', availableDevices.qmi_devices, '/dev/cdc-wdm0');
+    populateDeviceSelect('reboot_qmi_device', availableDevices.qmi_devices, '/dev/cdc-wdm0');
+    populateDeviceSelect('reboot_mbim_device', availableDevices.qmi_devices, '/dev/cdc-wdm0');
+}
+
+// Populate a single device select dropdown
+function populateDeviceSelect(selectId, devices, defaultValue) {
+    var select = document.getElementById(selectId);
+    if (!select) return;
+
+    var currentValue = select.value;
+
+    // Clear existing options
+    select.innerHTML = '';
+
+    // Add placeholder if no devices
+    if (devices.length === 0) {
+        var option = document.createElement('option');
+        option.value = '';
+        option.text = _('No devices found');
+        select.add(option);
+    } else {
+        // Add available devices
+        devices.forEach(function(device) {
+            var option = document.createElement('option');
+            option.value = device;
+            option.text = device;
+            select.add(option);
+        });
+    }
+
+    // Add "Custom" option at the end
+    var customOption = document.createElement('option');
+    customOption.value = 'custom';
+    customOption.text = _('Custom - Manual Entry');
+    select.add(customOption);
+
+    // Restore previous value if it exists in the list
+    if (currentValue && currentValue !== '') {
+        var found = false;
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === currentValue) {
+                select.value = currentValue;
+                found = true;
+                break;
+            }
+        }
+        // If not found, add it as custom and select it
+        if (!found && currentValue !== 'custom') {
+            var customValueOption = document.createElement('option');
+            customValueOption.value = currentValue;
+            customValueOption.text = currentValue + ' (' + _('Custom') + ')';
+            select.insertBefore(customValueOption, customOption);
+            select.value = currentValue;
+        }
+    } else if (devices.length > 0) {
+        // Default to first device if no value set
+        select.value = devices[0];
+    }
+}
+
+// Handle device select change - show/hide custom input
+function onDeviceSelectChange(selectElement) {
+    var selectId = selectElement.id;
+    var customInputId = selectId + '_custom';
+    var customInput = document.getElementById(customInputId);
+
+    if (!customInput) return;
+
+    if (selectElement.value === 'custom') {
+        // Show custom input field
+        customInput.style.display = 'block';
+        customInput.focus();
+    } else {
+        // Hide custom input field
+        customInput.style.display = 'none';
+        customInput.value = '';
+    }
+}
 
 function loadConfig() {
     var el = document.getElementById('config-loading'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
@@ -21,7 +132,7 @@ function loadConfig() {
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_config'), true);
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             document.getElementById('config-loading').style.display = 'none';
 
@@ -50,20 +161,20 @@ function populateForm(config) {
         // Global settings
         document.getElementById('apdu_backend').value = config['hermes-euicc'].apdu_backend || 'at';
 
-        // Device settings
-        document.getElementById('at_device').value = config['hermes-euicc'].at_device || '/dev/ttyUSB3';
-        document.getElementById('qmi_device').value = config['hermes-euicc'].qmi_device || '/dev/cdc-wdm0';
+        // Device settings - set after device dropdowns are populated
+        setDeviceValue('at_device', config['hermes-euicc'].at_device || '/dev/ttyUSB3');
+        setDeviceValue('qmi_device', config['hermes-euicc'].qmi_device || '/dev/cdc-wdm0');
         document.getElementById('qmi_sim_slot').value = config['hermes-euicc'].qmi_sim_slot || '1';
-        document.getElementById('mbim_device').value = config['hermes-euicc'].mbim_device || '/dev/cdc-wdm0';
+        setDeviceValue('mbim_device', config['hermes-euicc'].mbim_device || '/dev/cdc-wdm0');
         document.getElementById('mbim_proxy').value = config['hermes-euicc'].mbim_proxy || '0';
 
         // Reboot settings
         document.getElementById('reboot_method').value = config['hermes-euicc'].reboot_method || 'at';
         document.getElementById('reboot_at_command').value = config['hermes-euicc'].reboot_at_command || 'AT+CFUN=1,1';
-        document.getElementById('reboot_at_device').value = config['hermes-euicc'].reboot_at_device || config['hermes-euicc'].reboot_at_device || '/dev/ttyUSB3';
-        document.getElementById('reboot_qmi_device').value = config['hermes-euicc'].reboot_qmi_device || config['hermes-euicc'].reboot_qmi_device || '/dev/cdc-wdm0';
+        setDeviceValue('reboot_at_device', config['hermes-euicc'].reboot_at_device || '/dev/ttyUSB3');
+        setDeviceValue('reboot_qmi_device', config['hermes-euicc'].reboot_qmi_device || '/dev/cdc-wdm0');
         document.getElementById('reboot_qmi_slot').value = config['hermes-euicc'].reboot_qmi_slot || config['hermes-euicc'].qmi_sim_slot || '1';
-        document.getElementById('reboot_mbim_device').value = config['hermes-euicc'].reboot_mbim_device || config['hermes-euicc'].reboot_mbim_device || '/dev/cdc-wdm0';
+        setDeviceValue('reboot_mbim_device', config['hermes-euicc'].reboot_mbim_device || '/dev/cdc-wdm0');
         document.getElementById('reboot_custom_command').value = config['hermes-euicc'].reboot_custom_command || 'echo "Custom reboot command here"';
 
         // Logs settings
@@ -82,17 +193,53 @@ function populateForm(config) {
     onRebootMethodChange();
 }
 
+// Helper function to set device value in dropdown or custom field
+function setDeviceValue(selectId, value) {
+    var select = document.getElementById(selectId);
+    if (!select) return;
+
+    // Try to find the value in the dropdown
+    var found = false;
+    for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === value) {
+            select.value = value;
+            found = true;
+            break;
+        }
+    }
+
+    // If not found in dropdown, use custom option
+    if (!found && value && value !== '') {
+        var customOption = null;
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === 'custom') {
+                customOption = select.options[i];
+                break;
+            }
+        }
+
+        if (customOption) {
+            // Add custom value option before the "Custom" option
+            var customValueOption = document.createElement('option');
+            customValueOption.value = value;
+            customValueOption.text = value + ' (' + _('Custom') + ')';
+            select.insertBefore(customValueOption, customOption);
+            select.value = value;
+        }
+    }
+}
+
 function setDefaultValues() {
     // Global settings defaults
     document.getElementById('apdu_backend').value = 'at';
-    
+
     // Device settings defaults
     document.getElementById('at_device').value = '/dev/ttyUSB3';
     document.getElementById('qmi_device').value = '/dev/cdc-wdm0';
     document.getElementById('qmi_sim_slot').value = '1';
     document.getElementById('mbim_device').value = '/dev/cdc-wdm0';
     document.getElementById('mbim_proxy').value = '0';
-    
+
     // Reboot settings defaults
     document.getElementById('reboot_method').value = 'at';
     document.getElementById('reboot_at_command').value = 'AT+CFUN=1,1';
@@ -111,14 +258,14 @@ function setDefaultValues() {
 
 function onBackendChange() {
     const backend = document.getElementById('apdu_backend').value;
-    
+
     // Hide all device settings
     document.getElementById('at-device-setting').style.display = 'none';
     document.getElementById('qmi-device-setting').style.display = 'none';
     document.getElementById('qmi-sim-slot-setting').style.display = 'none';
     document.getElementById('mbim-device-setting').style.display = 'none';
     document.getElementById('mbim-proxy-setting').style.display = 'none';
-    
+
     // Show only relevant settings
     if (backend === 'at') {
         document.getElementById('at-device-setting').style.display = 'flex';
@@ -129,14 +276,14 @@ function onBackendChange() {
         document.getElementById('mbim-device-setting').style.display = 'flex';
         document.getElementById('mbim-proxy-setting').style.display = 'flex';
     }
-    
+
     // Update reboot method visibility
     onRebootMethodChange();
 }
 
 function onRebootMethodChange() {
     const method = document.getElementById('reboot_method').value;
-    
+
     // Hide all reboot settings
     document.getElementById('at-reboot-setting').style.display = 'none';
     document.getElementById('at-reboot-port-setting').style.display = 'none';
@@ -144,11 +291,11 @@ function onRebootMethodChange() {
     document.getElementById('qmi-reboot-slot-setting').style.display = 'none';
     document.getElementById('mbim-reboot-setting').style.display = 'none';
     document.getElementById('custom-reboot-setting').style.display = 'none';
-    
+
     // Show only relevant settings
     if (method === 'at') {
         document.getElementById('at-reboot-setting').style.display = 'flex';
-        document.getElementById('at-reboot-port-setting').style.display = 'flex'; 
+        document.getElementById('at-reboot-port-setting').style.display = 'flex';
     } else if (method === 'qmi') {
         document.getElementById('qmi-reboot-setting').style.display = 'flex';
         document.getElementById('qmi-reboot-slot-setting').style.display = 'flex';
@@ -179,20 +326,20 @@ function saveConfig() {
             // Global settings
             apdu_backend: document.getElementById('apdu_backend').value,
 
-            // Device settings
-            at_device: document.getElementById('at_device').value,
-            qmi_device: document.getElementById('qmi_device').value,
+            // Device settings - get from select or custom input
+            at_device: getDeviceValue('at_device'),
+            qmi_device: getDeviceValue('qmi_device'),
             qmi_sim_slot: document.getElementById('qmi_sim_slot').value,
-            mbim_device: document.getElementById('mbim_device').value,
+            mbim_device: getDeviceValue('mbim_device'),
             mbim_proxy: document.getElementById('mbim_proxy').value,
 
             // Reboot settings
             reboot_method: document.getElementById('reboot_method').value,
             reboot_at_command: document.getElementById('reboot_at_command').value,
-            reboot_at_device: document.getElementById('reboot_at_device').value,
-            reboot_qmi_device: document.getElementById('reboot_qmi_device').value,
+            reboot_at_device: getDeviceValue('reboot_at_device'),
+            reboot_qmi_device: getDeviceValue('reboot_qmi_device'),
             reboot_qmi_slot: document.getElementById('reboot_qmi_slot').value,
-            reboot_mbim_device: document.getElementById('reboot_mbim_device').value,
+            reboot_mbim_device: getDeviceValue('reboot_mbim_device'),
             reboot_custom_command: document.getElementById('reboot_custom_command').value,
 
             // Logs settings
@@ -206,7 +353,7 @@ function saveConfig() {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_saveconfig'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             // Hide modal
             ui.hideModal();
@@ -231,6 +378,22 @@ function saveConfig() {
     xhr.send('config=' + encodeURIComponent(JSON.stringify(config)));
 }
 
+// Helper function to get device value from dropdown or custom input
+function getDeviceValue(selectId) {
+    var select = document.getElementById(selectId);
+    if (!select) return '';
+
+    var selectValue = select.value;
+
+    // If custom option is selected, get value from custom input
+    if (selectValue === 'custom') {
+        var customInput = document.getElementById(selectId + '_custom');
+        return customInput ? customInput.value : '';
+    }
+
+    return selectValue;
+}
+
 // Utility functions for validation
 function validateDevicePath(path) {
     return path && path.startsWith('/dev/');
@@ -243,7 +406,7 @@ function validateSimSlot(slot) {
 
 function validateConfig() {
     var backend = document.getElementById('apdu_backend').value;
-    
+
     // Validate device path based on selected backend
     if (backend === 'at') {
         var atDevice = document.getElementById('at_device').value;
@@ -270,6 +433,6 @@ function validateConfig() {
             return false;
         }
     }
-    
+
     return true;
 }

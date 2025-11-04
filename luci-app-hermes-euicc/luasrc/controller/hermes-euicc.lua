@@ -41,6 +41,7 @@ function index()
     entry({"admin", "modem", "hermes-euicc", "api_reboot_status"}, call("reboot_status"), nil).leaf = true
     entry({"admin", "modem", "hermes-euicc", "api_reboot_modem"}, call("reboot_modem"), nil).leaf = true
     entry({"admin", "modem", "hermes-euicc", "api_discover_download"}, call("hermes_discover_download"), nil).leaf = true
+    entry({"admin", "modem", "hermes-euicc", "api_list_devices"}, call("list_devices"), nil).leaf = true
 end
 
 -- Build command line arguments for hermes-euicc
@@ -469,4 +470,52 @@ function hermes_discover_download()
     end
 
     luci.http.write_json(result)
+end
+
+-- List available devices in /dev directory
+function list_devices()
+    local fs = require("nixio.fs")
+    local devices = {}
+
+    -- AT devices (serial ports)
+    local at_devices = {}
+    -- QMI/MBIM devices
+    local qmi_devices = {}
+
+    local dir = fs.dir("/dev")
+    if dir then
+        for entry in dir do
+            local full_path = "/dev/" .. entry
+
+            -- AT devices: ttyUSB*, ttyACM*
+            if entry:match("^ttyUSB") or entry:match("^ttyACM") then
+                table.insert(at_devices, full_path)
+            end
+
+            -- QMI/MBIM devices: cdc-wdm*, wwan*, mhi_*
+            if entry:match("^cdc%-wdm") or entry:match("^wwan") or entry:match("^mhi_") then
+                table.insert(qmi_devices, full_path)
+            end
+        end
+    end
+
+    -- Sort devices alphabetically
+    table.sort(at_devices)
+    table.sort(qmi_devices)
+
+    -- Combine all devices
+    for _, dev in ipairs(at_devices) do
+        table.insert(devices, dev)
+    end
+    for _, dev in ipairs(qmi_devices) do
+        table.insert(devices, dev)
+    end
+
+    luci.http.prepare_content("application/json")
+    luci.http.write_json({
+        success = true,
+        devices = devices,
+        at_devices = at_devices,
+        qmi_devices = qmi_devices
+    })
 end

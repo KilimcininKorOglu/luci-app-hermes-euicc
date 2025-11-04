@@ -14,14 +14,14 @@ function checkServerRebootStatus() {
     // but modem hasn't been rebooted since
     var xhr = new XMLHttpRequest();
     xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_reboot_status'), true);
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             try {
                 var data = JSON.parse(xhr.responseText);
                 if (data.success && data.reboot_needed) {
                     needsReboot = true;
                     rebootReason = data.reason || _('Profile changes require a modem restart to take effect.');
-                    
+
                     // Show banner
                     showRebootBanner(rebootReason);
                 } else {
@@ -43,19 +43,19 @@ function createRebootBanner() {
     if (existingBanner) {
         return; // Banner already present
     }
-    
+
     // Find profiles container
     var profilesContent = document.getElementById('profiles-content');
     if (!profilesContent) {
         return;
     }
-    
+
     // Create banner
     var banner = document.createElement('div');
     banner.id = 'reboot-reminder-banner';
     banner.className = 'reboot-reminder-banner';
     banner.style.cssText = 'background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; padding: 15px 20px; margin-bottom: 20px; border-radius: 8px; border: none; box-shadow: 0 4px 12px rgba(255,107,107,0.3); font-size: 14px; display: none; position: relative; overflow: hidden;';
-    
+
     // Add background pattern
     banner.innerHTML = `
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px); pointer-events: none;"></div>
@@ -75,7 +75,7 @@ function createRebootBanner() {
             </div>
         </div>
     `;
-    
+
     // Add hover styles dynamically
     var style = document.createElement('style');
     style.textContent = `
@@ -95,7 +95,7 @@ function createRebootBanner() {
         }
     `;
     document.head.appendChild(style);
-    
+
     // Insert banner at the beginning of profiles content
     var firstChild = profilesContent.firstChild;
     profilesContent.insertBefore(banner, firstChild);
@@ -104,27 +104,27 @@ function createRebootBanner() {
 function showRebootBanner(reason) {
     needsReboot = true;
     rebootReason = reason || _('Change eSIM profile requires a modem restart to take effect.');
-    
+
     // Create banner if it doesn't exist
     createRebootBanner();
-    
+
     // Show banner
     var banner = document.getElementById('reboot-reminder-banner');
     if (banner) {
         banner.style.display = 'block';
-        
+
         // Update reason text
         var reasonText = document.getElementById('reboot-reason-text');
         if (reasonText) {
             reasonText.textContent = rebootReason;
         }
-        
+
         // Entry animation
         banner.style.opacity = '0';
         banner.style.transform = 'translateY(-20px)';
         banner.style.transition = 'all 0.3s ease';
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             banner.style.opacity = '1';
             banner.style.transform = 'translateY(0)';
         }, 10);
@@ -134,14 +134,14 @@ function showRebootBanner(reason) {
 function hideRebootBanner() {
     needsReboot = false;
     rebootReason = '';
-    
+
     var banner = document.getElementById('reboot-reminder-banner');
     if (banner) {
         banner.style.transition = 'all 0.3s ease';
         banner.style.opacity = '0';
         banner.style.transform = 'translateY(-20px)';
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             banner.style.display = 'none';
         }, 300);
     }
@@ -154,19 +154,19 @@ function dismissRebootBanner() {
         banner.style.transition = 'all 0.3s ease';
         banner.style.opacity = '0';
         banner.style.transform = 'translateY(-20px)';
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             banner.style.display = 'none';
         }, 300);
-        
+
         // Show reminder message
-        setTimeout(function() {
+        setTimeout(function () {
             var toast = document.createElement('div');
             toast.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #ffc107; color: #212529; padding: 12px 20px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000; font-weight: bold; font-size: 14px;';
             toast.textContent = _('The reminder will reappear when you reload the page until you restart the modem.');
             document.body.appendChild(toast);
-            
-            setTimeout(function() {
+
+            setTimeout(function () {
                 if (document.body.contains(toast)) {
                     document.body.removeChild(toast);
                 }
@@ -183,7 +183,7 @@ function showEsimDeleteNotificationBanner() {
     //if (existingBanner) {
     //    return; // Banner already shown
     //}
-    
+
     // Find profiles container
     var profilesContent = document.getElementById('profiles-content');
     if (!profilesContent) {
@@ -195,7 +195,7 @@ function showEsimDeleteNotificationBanner() {
     banner.id = 'esim-delete-notification-banner';
     banner.className = 'esim-delete-notification-banner';
     banner.style.cssText = 'background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; padding: 15px 20px; margin-bottom: 20px; border-radius: 8px; border: none; box-shadow: 0 4px 12px rgba(255,107,107,0.3); font-size: 14px; display: none; position: relative; overflow: hidden;';
-    
+
     // Add background pattern
     banner.innerHTML = `
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px); pointer-events: none;"></div>
@@ -216,7 +216,7 @@ function showEsimDeleteNotificationBanner() {
             </div>
         </div>
     `;
-    
+
     // Add hover styles dynamically
     var style = document.createElement('style');
     style.textContent = `
@@ -250,12 +250,12 @@ function showEsimDeleteNotificationBanner() {
         }            
     `;
     document.head.appendChild(style);
-    
+
     // Insert banner at the beginning of profiles content
     var firstChild = profilesContent.firstChild;
     profilesContent.insertBefore(banner, firstChild);
 
-    setTimeout(function() {
+    setTimeout(function () {
         banner.style.display = 'block';
     }, 100);
 }
@@ -270,7 +270,7 @@ function hideEsimDeleteNotificationBanner() {
 function processAllNotificationsFromProfile() {
     var xhr = new XMLHttpRequest();
     var processBtn = document.getElementById('esim-process-btn');
-    
+
     if (processBtn) {
         processBtn.innerHTML = '<span class="processing-spinner"></span>' + _('Processing...');
         processBtn.disabled = true;
@@ -278,27 +278,27 @@ function processAllNotificationsFromProfile() {
 
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_notification_process_all'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {          
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 try {
-                var data = JSON.parse(xhr.responseText);
+                    var data = JSON.parse(xhr.responseText);
 
-                if (data.success) {
-                    var successMessage = data.data && data.data.message || 'Notification process completed successfully';
-                    document.getElementById('profile-notifications-success-message').textContent = successMessage;
-                    var el = document.getElementById('profile-notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
+                    if (data.success) {
+                        var successMessage = data.data && data.data.message || 'Notification process completed successfully';
+                        document.getElementById('profile-notifications-success-message').textContent = successMessage;
+                        var el = document.getElementById('profile-notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
 
-                    setTimeout(function() {
-                        loadProfiles();
-                        document.getElementById('profile-notifications-success').style.display = 'none';
-                        document.getElementById('esim-delete-notification-banner').style.display = 'none';
-                    }, 2000);
-                } else {
-                    var errorMessage = data.error || 'Unknown error occurred';
-                    document.getElementById('profile-notifications-error-message').textContent = errorMessage;
-                    var el = document.getElementById('profile-notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
-                }                        
+                        setTimeout(function () {
+                            loadProfiles();
+                            document.getElementById('profile-notifications-success').style.display = 'none';
+                            document.getElementById('esim-delete-notification-banner').style.display = 'none';
+                        }, 2000);
+                    } else {
+                        var errorMessage = data.error || 'Unknown error occurred';
+                        document.getElementById('profile-notifications-error-message').textContent = errorMessage;
+                        var el = document.getElementById('profile-notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
+                    }
 
                 } catch (e) {
                     document.getElementById('profile-notifications-error-message').textContent = 'Invalid response format';
@@ -310,7 +310,7 @@ function processAllNotificationsFromProfile() {
                 var el = document.getElementById('profile-notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
-    };                
+    };
     xhr.send();
 }
 
@@ -323,10 +323,10 @@ function loadProfiles() {
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_profiles'), true);
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             document.getElementById('profiles-loading').style.display = 'none';
-            
+
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
                 if (data.success) {
@@ -350,23 +350,23 @@ function loadProfiles() {
 function displayProfiles(profiles) {
     var tbody = document.getElementById('profiles-tbody');
     tbody.innerHTML = '';
-    
+
     window.currentProfilesData = profiles;
-    
+
     if (!profiles || profiles.length === 0) {
         var el = document.getElementById('no-profiles'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
         return;
     }
-    
+
     document.getElementById('no-profiles').style.display = 'none';
-    
-    profiles.forEach(function(profile) {
+
+    profiles.forEach(function (profile) {
         var row = document.createElement('tr');
         row.className = 'cbi-section-table-row';
-        
+
         var nameCell = document.createElement('td');
         nameCell.className = 'cbi-section-table-cell';
-        
+
         var displayName = '';
         if (profile.profile_nickname && profile.profile_nickname.trim() !== '') {
             displayName = profile.profile_nickname;
@@ -377,16 +377,16 @@ function displayProfiles(profiles) {
         } else {
             displayName = 'Unknown';
         }
-        
+
         nameCell.textContent = displayName;
         row.appendChild(nameCell);
-        
+
         var iccidCell = document.createElement('td');
         iccidCell.className = 'cbi-section-table-cell';
         iccidCell.textContent = profile.iccid || '-';
         iccidCell.style.fontFamily = 'monospace';
         row.appendChild(iccidCell);
-        
+
         var providerCell = document.createElement('td');
         providerCell.className = 'cbi-section-table-cell';
         providerCell.textContent = profile.service_provider_name || '-';
@@ -410,67 +410,67 @@ function displayProfiles(profiles) {
             statusLabel = _('UNKNOWN');
             statusClass = 'unknown';
         }
-        
+
         statusCell.innerHTML = '<span class="profile-status profile-status-' + statusClass + '">' + statusLabel + '</span>';
         row.appendChild(statusCell);
-        
+
         var actionsCell = document.createElement('td');
         actionsCell.className = 'cbi-section-table-cell';
         actionsCell.style.textAlign = 'center';
-        
+
         if (profile.iccid) {
             var isEnabled = profile.profile_state === 1;
             var toggleText = isEnabled ? _('Disable') : _('Enable');
             var toggleAction = isEnabled ? 'disable' : 'enable';
-            
+
             // Create action dropdown container
             var actionContainer = document.createElement('div');
             actionContainer.className = 'action-dropdown';
-            
+
             // Toggle button (primary action)
             var toggleButton = document.createElement('input');
             toggleButton.type = 'button';
             toggleButton.className = 'cbi-button profile-action-btn primary-action';
             toggleButton.value = toggleText;
-            toggleButton.onclick = function() { toggleProfile(profile.iccid, toggleAction, displayName); };
-            
+            toggleButton.onclick = function () { toggleProfile(profile.iccid, toggleAction, displayName); };
+
             // Dropdown button
             var dropdownButton = document.createElement('button');
             dropdownButton.type = 'button';
             dropdownButton.className = 'cbi-button profile-action-btn dropdown-toggle';
             dropdownButton.innerHTML = '▼';
-            dropdownButton.onclick = function(e) { toggleDropdown(e, profile.iccid); };
-            
+            dropdownButton.onclick = function (e) { toggleDropdown(e, profile.iccid); };
+
             // Dropdown menu
             var dropdownMenu = document.createElement('div');
             dropdownMenu.className = 'profile-dropdown-menu';
             dropdownMenu.id = 'dropdown-' + profile.iccid;
-            
+
             // Change Name option
             var changeNameItem = document.createElement('div');
             changeNameItem.className = 'dropdown-item';
             changeNameItem.innerHTML = '<i class="icon-edit"></i> ' + _('Change Nickname');
-            changeNameItem.onclick = function() { showChangeNameDialog(profile.iccid, ''); };
-            
+            changeNameItem.onclick = function () { showChangeNameDialog(profile.iccid, ''); };
+
             // Delete option
             var deleteItem = document.createElement('div');
             deleteItem.className = 'dropdown-item danger';
             deleteItem.innerHTML = '<i class="icon-trash"></i> ' + _('Delete Profile');
-            
+
             // Use display name for deletion confirmation
             var confirmName = displayName;
-            deleteItem.onclick = function() { confirmDeleteProfile(profile.iccid, confirmName); };
-            
+            deleteItem.onclick = function () { confirmDeleteProfile(profile.iccid, confirmName); };
+
             dropdownMenu.appendChild(changeNameItem);
             dropdownMenu.appendChild(deleteItem);
-            
+
             actionContainer.appendChild(toggleButton);
             actionContainer.appendChild(dropdownButton);
             actionContainer.appendChild(dropdownMenu);
-            
+
             actionsCell.appendChild(actionContainer);
         }
-        
+
         row.appendChild(actionsCell);
         tbody.appendChild(row);
     });
@@ -479,26 +479,26 @@ function displayProfiles(profiles) {
 function toggleProfile(iccid, action, profileName) {
     var button = event.target;
     var originalText = button.value;
-    
+
     // If we're enabling a profile, show reboot warning
     if (action === 'enable') {
         var confirmMessage = _('Are you sure you want to enable the profile "%s"?\n\nIMPORTANT: After enabling the profile, you will need to restart the modem for the changes to take effect. The profile will not be active until the modem is restarted.').replace('%s', profileName);
-        
+
         if (!confirm(confirmMessage)) {
             return; // User cancelled
         }
     }
-    
+
     button.value = _('Working...');
     button.disabled = true;
-    
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_toggle'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             button.disabled = false;
-            
+
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
                 if (data.success) {
@@ -523,14 +523,14 @@ function toggleProfile(iccid, action, profileName) {
 
 function toggleDropdown(event, iccid) {
     event.stopPropagation();
-    
+
     var allDropdowns = document.querySelectorAll('.profile-dropdown-menu');
-    allDropdowns.forEach(function(dropdown) {
+    allDropdowns.forEach(function (dropdown) {
         if (dropdown.id !== 'dropdown-' + iccid) {
             dropdown.classList.remove('show');
         }
     });
-    
+
     var dropdown = document.getElementById('dropdown-' + iccid);
     dropdown.classList.toggle('show');
 }
@@ -544,7 +544,7 @@ function showChangeNameDialog(iccid, currentName) {
             break;
         }
     }
-    
+
     var currentDisplayName = '';
     if (currentProfile) {
         if (currentProfile.profile_nickname && currentProfile.profile_nickname.trim() !== '') {
@@ -555,7 +555,7 @@ function showChangeNameDialog(iccid, currentName) {
             currentDisplayName = currentProfile.service_provider_name;
         }
     }
-    
+
     var newName = prompt(_('Enter new profile nickname') + ':', currentDisplayName);
     if (newName !== null && newName.trim() !== '') {
         changeProfileName(iccid, newName.trim());
@@ -566,7 +566,7 @@ function changeProfileName(iccid, newName) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_nickname'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
@@ -594,7 +594,7 @@ function deleteProfile(iccid) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_delete'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
@@ -617,7 +617,7 @@ function deleteProfile(iccid) {
 
 function showRebootDialog(profileName) {
     var message = _('Profile "%s" has been enabled successfully!\n\nTo activate the profile, you need to restart the modem. Would you like to restart the modem now?').replace('%s', profileName);
-    
+
     if (confirm(message)) {
         // User wants to reboot now
         rebootModem();
@@ -625,9 +625,9 @@ function showRebootDialog(profileName) {
         // User chose not to reboot now - banner will appear automatically
         // since the server-side flag was already set by the toggle operation
         alert(_('A reminder banner will appear and persist until you restart the modem.'));
-        
+
         // Refresh to show the banner immediately
-        setTimeout(function() {
+        setTimeout(function () {
             checkServerRebootStatus();
         }, 500);
     }
@@ -636,30 +636,30 @@ function showRebootDialog(profileName) {
 function rebootModem() {
     // Show final confirmation message
     var finalConfirm = _('The modem will be restarted now. This operation will take about few minutes and you will lose the connection temporarily.\n\nContinue with the restart?');
-    
+
     if (!confirm(finalConfirm)) {
         return;
     }
-    
+
     // Hide reboot banner since we're rebooting
     hideRebootBanner();
-    
+
     // Show status message
     var rebootMessage = document.createElement('div');
     rebootMessage.id = 'reboot-status';
     rebootMessage.style.cssText = 'position: fixed; top: 50%; left: 50%; background: #fff; border: 2px solid #007bff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 10000; text-align: center; min-width: 300px;';
     rebootMessage.innerHTML = '<h3 style="margin-top: 0; color: #007bff;">' + _('Restarting Modem') + '</h3>' +
-                             '<p>' + _('The modem is being restarted. Please wait...') + '</p>' +
-                             '<div style="margin: 15px 0;"><img src="/luci-static/resources/icons/loading.gif" alt="Loading" /></div>' +
-                             '<p style="font-size: 12px; color: #666;">' + _('This page will reload automatically when the modem is ready.') + '</p>';
-    
+        '<p>' + _('The modem is being restarted. Please wait...') + '</p>' +
+        '<div style="margin: 15px 0;"><img src="/luci-static/resources/icons/loading.gif" alt="Loading" /></div>' +
+        '<p style="font-size: 12px; color: #666;">' + _('This page will reload automatically when the modem is ready.') + '</p>';
+
     document.body.appendChild(rebootMessage);
-    
+
     // Execute reboot
     var xhr = new XMLHttpRequest();
     xhr.open('POST', L.url('admin', 'modem', 'hermes-euicc', 'api_reboot_modem'), true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
@@ -682,28 +682,28 @@ function rebootModem() {
 }
 
 function startRebootCountdown() {
-    var countdown = 30; 
+    var countdown = 30;
     var rebootStatus = document.getElementById('reboot-status');
-    
+
     if (!rebootStatus) return;
-    
-    var interval = setInterval(function() {
+
+    var interval = setInterval(function () {
         countdown--;
-        
+
         var countdownText = rebootStatus.querySelector('p');
         if (countdownText) {
             countdownText.textContent = _('Modem is restarting... Time remaining: %d seconds').replace('%d', countdown);
         }
-        
+
         if (countdown <= 0) {
             clearInterval(interval);
             // Try to reload profile
-	    loadProfiles();
+            loadProfiles();
         }
     }, 1000);
-    
+
     // Try to check if system is back online before countdown
-    setTimeout(function() {
+    setTimeout(function () {
         checkSystemOnline(interval);
     }, 15000); // Start checking after 15 seconds
 }
@@ -712,19 +712,19 @@ function checkSystemOnline(countdownInterval) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_status'), true);
     xhr.timeout = 5000; // 5 seconds timeout
-    
-    xhr.onreadystatechange = function() {
+
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // System back online
             clearInterval(countdownInterval);
-            
+
             var rebootStatus = document.getElementById('reboot-status');
             if (rebootStatus) {
                 rebootStatus.innerHTML = '<h3 style="margin-top: 0; color: #28a745;">' + _('Restart Complete') + '</h3>' +
-                                       '<p>' + _('The modem has been restarted successfully. Reloading page...') + '</p>';
-                
-                setTimeout(function() {
-		    // Remove reboot status dialog first
+                    '<p>' + _('The modem has been restarted successfully. Reloading page...') + '</p>';
+
+                setTimeout(function () {
+                    // Remove reboot status dialog first
                     if (document.body.contains(rebootStatus)) {
                         document.body.removeChild(rebootStatus);
                     }
@@ -733,27 +733,27 @@ function checkSystemOnline(countdownInterval) {
             }
         }
     };
-    
-    xhr.ontimeout = function() {
+
+    xhr.ontimeout = function () {
         // System still not online, retry in 5 seconds
-        setTimeout(function() {
+        setTimeout(function () {
             checkSystemOnline(countdownInterval);
         }, 5000);
     };
-    
-    xhr.onerror = function() {
+
+    xhr.onerror = function () {
         // System still not online, retry in 5 seconds
-        setTimeout(function() {
+        setTimeout(function () {
             checkSystemOnline(countdownInterval);
         }, 5000);
     };
-    
+
     xhr.send();
 }
 
-document.addEventListener('click', function() {
+document.addEventListener('click', function () {
     var allDropdowns = document.querySelectorAll('.profile-dropdown-menu');
-    allDropdowns.forEach(function(dropdown) {
+    allDropdowns.forEach(function (dropdown) {
         dropdown.classList.remove('show');
     });
 });

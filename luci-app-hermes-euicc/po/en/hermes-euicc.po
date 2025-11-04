@@ -544,3 +544,15 @@ msgstr "Working..."
 
 msgid "eSIM Delete Notification Required"
 msgstr "eSIM Delete Notification Required"
+
+msgid "Loading devices..."
+msgstr "Loading devices..."
+
+msgid "No devices found"
+msgstr "No devices found"
+
+msgid "Custom - Manual Entry"
+msgstr "Custom - Manual Entry"
+
+msgid "Custom"
+msgstr "Custom"

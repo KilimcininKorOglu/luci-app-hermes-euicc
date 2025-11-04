@@ -3,32 +3,32 @@ Developed by: Giammarco M. <stich86@gmail.com>
 Version: 1.0.0
 */
 
-var eSIMConnectivity = (function() {
+var eSIMConnectivity = (function () {
     var isConnected = false;
-    
+
     function checkConnectivity() {
         var checkingEl = document.getElementById('connectivity-checking');
         var onlineEl = document.getElementById('connectivity-online');
         var offlineEl = document.getElementById('connectivity-offline');
-        
+
         if (!checkingEl || !onlineEl || !offlineEl) {
             console.log('Connectivity banner elements not found, trying again in 100ms...');
             setTimeout(checkConnectivity, 100);
             return;
         }
-        
+
         checkingEl.style.display = 'block';
         onlineEl.style.display = 'none';
         offlineEl.style.display = 'none';
-        
+
         var xhr = new XMLHttpRequest();
         xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_connectivity'), true);
         xhr.timeout = 10000;
-        
-        xhr.onreadystatechange = function() {
+
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 checkingEl.style.display = 'none';
-                
+
                 if (xhr.status === 200) {
                     try {
                         var data = JSON.parse(xhr.responseText);
@@ -50,20 +50,20 @@ var eSIMConnectivity = (function() {
                 }
             }
         };
-        
-        xhr.ontimeout = function() {
+
+        xhr.ontimeout = function () {
             checkingEl.style.display = 'none';
             showOffline();
         };
-        
-        xhr.onerror = function() {
+
+        xhr.onerror = function () {
             checkingEl.style.display = 'none';
             showOffline();
         };
-        
+
         xhr.send();
     }
-    
+
     function showOffline() {
         isConnected = false;
         var offlineEl = document.getElementById('connectivity-offline');
@@ -71,13 +71,13 @@ var eSIMConnectivity = (function() {
             offlineEl.style.display = 'block';
         }
     }
-    
+
     function forceCheck() {
         isConnected = false;
         var checkingEl = document.getElementById('connectivity-checking');
         var onlineEl = document.getElementById('connectivity-online');
         var offlineEl = document.getElementById('connectivity-offline');
-        
+
         if (checkingEl && onlineEl && offlineEl) {
             checkingEl.style.display = 'block';
             onlineEl.style.display = 'none';
@@ -87,11 +87,11 @@ var eSIMConnectivity = (function() {
             setTimeout(forceCheck, 100);
         }
     }
-    
+
     function getConnectionStatus() {
         return isConnected;
     }
-    
+
     function promptIfOffline(message) {
         if (!isConnected) {
             if (confirm(message || _('No internet connection detected. Do you want to check connectivity again before proceeding?'))) {
@@ -101,7 +101,7 @@ var eSIMConnectivity = (function() {
         }
         return true;
     }
-    
+
     function init() {
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', forceCheck);
@@ -109,7 +109,7 @@ var eSIMConnectivity = (function() {
             forceCheck();
         }
     }
-    
+
     return {
         check: checkConnectivity,
         forceCheck: forceCheck,

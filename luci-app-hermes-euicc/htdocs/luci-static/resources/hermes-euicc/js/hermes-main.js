@@ -8,22 +8,22 @@ var lastInactiveTime = {};
 function showTab(tabId, tabLink) {
     var tabContents = document.querySelectorAll('.cbi-tabcontent');
     for (var i = 0; i < tabContents.length; i++) {
-        if(tabContents[i].classList.contains('cbi-tabcontent-active')) {
+        if (tabContents[i].classList.contains('cbi-tabcontent-active')) {
             lastInactiveTime[tabContents[i].id] = new Date().getTime();
         }
         tabContents[i].classList.remove('cbi-tabcontent-active');
     }
-    
+
     var tabLinks = document.querySelectorAll('.cbi-tab');
     for (var i = 0; i < tabLinks.length; i++) {
         tabLinks[i].classList.remove('cbi-tab-active');
     }
-    
+
     var targetTab = document.getElementById(tabId);
     if (targetTab) {
         targetTab.classList.add('cbi-tabcontent-active');
     }
-    
+
     if (tabLink && tabLink.parentNode) {
         tabLink.parentNode.classList.add('cbi-tab-active');
     }
@@ -51,13 +51,13 @@ function showTab(tabId, tabLink) {
     return false;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var firstTab = document.querySelector('.cbi-tab a');
     if (firstTab) {
         firstTab.parentNode.classList.add('cbi-tab-active');
 
         if (typeof loadESIMInfo === 'function') {
-            setTimeout(function() {
+            setTimeout(function () {
                 loadESIMInfo();
             }, 2000);
         }

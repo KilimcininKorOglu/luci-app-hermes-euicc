@@ -23,7 +23,7 @@ function loadChipInfo() {
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', L.url('admin', 'modem', 'hermes-euicc', 'api_chip_info'), true);
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (loadingEl) loadingEl.style.display = 'none';
 
@@ -115,7 +115,7 @@ function displayChipInfo(info) {
         var capEl = document.getElementById('capabilities-info');
         if (capEl) {
             var capHtml = '<div class="chip-info-card"><h4>Capabilities</h4><ul class="capability-list">';
-            info.euicc_info2.uicc_capability.forEach(function(cap) {
+            info.euicc_info2.uicc_capability.forEach(function (cap) {
                 capHtml += '<li>' + formatCapability(cap) + '</li>';
             });
             capHtml += '</ul></div>';
@@ -170,9 +170,9 @@ function createStorageBar(freeBytes) {
     }
 
     return '<div class="storage-progress">' +
-           '<div class="' + barClass + '" style="width: ' + usedPercent.toFixed(1) + '%"></div>' +
-           '</div>' +
-           '<div class="storage-percent">' + usedPercent.toFixed(1) + '% Used</div>';
+        '<div class="' + barClass + '" style="width: ' + usedPercent.toFixed(1) + '%"></div>' +
+        '</div>' +
+        '<div class="storage-percent">' + usedPercent.toFixed(1) + '% Used</div>';
 }
 
 function formatCapability(cap) {
