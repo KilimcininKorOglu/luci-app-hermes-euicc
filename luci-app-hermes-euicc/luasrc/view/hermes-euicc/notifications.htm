@@ -78,11 +78,11 @@
 
 <div class="cbi-page-custom-actions">
         <div id="bulk-notification-actions" class="hidden">
-            <input type="button" class="cbi-button notification-action-btn process-btn" value="Process All" onclick="processAllNotifications()" />
-            <input type="button" class="cbi-button notification-action-btn process-btn" value="Process and Remove All" onclick="processAllNotificationsAndRemove()" />
-            <input type="button" class="cbi-button notification-action-btn remove-btn" value="Remove All" onclick="removeAllNotifications()" />
+            <input type="button" class="cbi-button cbi-button-apply process-btn" value="Process All" onclick="processAllNotifications()" />
+            <input type="button" class="cbi-button cbi-button-neutral process-btn" value="Process and Remove All" onclick="processAllNotificationsAndRemove()" />
+            <input type="button" class="cbi-button cbi-button-reset remove-btn" value="Remove All" onclick="removeAllNotifications()" />
         </div>
-        <input type="button" class="cbi-button notification-action-btn refresh-btn" value="Clear Logs" onclick="clearNotificationLogs()" />
+        <input type="button" class="cbi-button cbi-button-reset refresh-btn" value="Clear Logs" onclick="clearNotificationLogs()" />
         <input type="button" class="cbi-button cbi-button-action" value="<%:Refresh%>" onclick="loadNotifications()" />
 </div>
 
