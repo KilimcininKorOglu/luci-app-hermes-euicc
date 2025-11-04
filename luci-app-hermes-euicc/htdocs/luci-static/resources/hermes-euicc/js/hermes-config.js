@@ -164,9 +164,14 @@ function saveConfig() {
     if (!validateConfig()) {
         return;
     }
-    
+
     document.getElementById('config-error').style.display = 'none';
     document.getElementById('config-success').style.display = 'none';
+
+    // Show LuCI applying modal
+    ui.showModal(_('Applying configuration'), [
+        E('p', { 'class': 'spinning' }, _('Applying configuration changes…'))
+    ]);
 
     // Read all form data and organize it in the unified hermes-euicc structure
     var config = {
@@ -203,6 +208,9 @@ function saveConfig() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
+            // Hide modal
+            ui.hideModal();
+
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
                 if (data.success) {
