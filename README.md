@@ -74,55 +74,39 @@ luci-app-hermes-euicc:
 
 ## Screenshots
 
-<details>
-<summary>Main Dashboard</summary>
+### Main Dashboard
 
-![eSIM Info](asset/hermes-esim-info.png)
+![eSIM Info](screenshots/hermes-esim-info.png)
+
 *Main view with eSIM status*
-</details>
 
-<details>
-<summary>Profile Management</summary>
+### Profile Management
 
-![Profiles](asset/hermes-esim-profiles.png)
+![Profiles](screenshots/hermes-esim-profiles.png)
+
 *List and management of installed eSIM profiles*
-</details>
 
-<details>
-<summary>Profile Download</summary>
+### Profile Download
 
-![Download Profile](asset/hermes-esim-downloads.png)
+![Download Profile](screenshots/hermes-esim-downloads.png)
+
 *Download new profiles via QR code or manual entry*
-</details>
-
-<details>
-<summary>Notifications List</summary>
-
-![Notifications](asset/hermes-esim-notifications.png)
-*List and management of all notifications on eSIM*
-</details>
 
 ### Configuration
 
 *Configuration panel for hermes-euicc binary and reboot commands (configurations can be mixed)*
 
-<details>
-<summary>AT Mode</summary>
+#### AT Mode
 
-![Configuration-AT](asset/hermes-config-at.png)
-</details>
+![Configuration-AT](screenshots/hermes-config-at.png)
 
-<details>
-<summary>QMI Mode</summary>
+#### QMI Mode
 
-![Configuration-QMI](asset/hermes-config-qmi.png)
-</details>
+![Configuration-QMI](screenshots/hermes-config-qmi.png)
 
-<details>
-<summary>MBIM Mode</summary>
+#### MBIM Mode
 
-![Configuration-MBIM](asset/hermes-config-mbim.png)
-</details>
+![Configuration-MBIM](screenshots/hermes-config-mbim.png)
 
 ## Tested Modules and eSIMs
 
