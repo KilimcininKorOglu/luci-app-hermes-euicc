@@ -667,3 +667,21 @@ msgstr "Discovery failed"
 
 msgid "Request failed (HTTP "
 msgstr "Request failed (HTTP "
+
+msgid "Failed to load notifications"
+msgstr "Failed to load notifications"
+
+msgid "Unknown Provider"
+msgstr "Unknown Provider"
+
+msgid "Notification process completed successfully"
+msgstr "Notification process completed successfully"
+
+msgid "Unknown error occurred"
+msgstr "Unknown error occurred"
+
+msgid "Server error occurred"
+msgstr "Server error occurred"
+
+msgid "Failed to process notification (HTTP "
+msgstr "Failed to process notification (HTTP "

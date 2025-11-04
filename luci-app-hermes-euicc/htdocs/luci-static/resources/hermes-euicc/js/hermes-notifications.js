@@ -53,11 +53,11 @@ function loadNotifications() {
                         displayNotifications(data.notifications);
                         var el = document.getElementById('notifications-content'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     } else {
-                        document.getElementById('notifications-error-message').textContent = data.error || 'Unknown error';
+                        document.getElementById('notifications-error-message').textContent = data.error || _('Unknown error');
                         var el = document.getElementById('notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     }
                 } else {
-                    document.getElementById('notifications-error-message').textContent = 'Failed to load notifications';
+                    document.getElementById('notifications-error-message').textContent = _('Failed to load notifications');
                     var el = document.getElementById('notifications-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                 }
             }
@@ -78,7 +78,7 @@ function loadProfilesForLookup(callback) {
                     profilesLookup = {};
                     data.profiles.forEach(function (profile) {
                         if (profile.iccid) {
-                            profilesLookup[profile.iccid] = profile.service_provider_name || 'Unknown Provider';
+                            profilesLookup[profile.iccid] = profile.service_provider_name || _('Unknown Provider');
                         }
                     });
                 }
@@ -122,7 +122,7 @@ function displayNotifications(notifications) {
         // Provider (lookup from profiles)
         var providerCell = document.createElement('td');
         providerCell.className = 'cbi-section-table-cell';
-        var provider = profilesLookup[notification.iccid] || 'Unknown';
+        var provider = profilesLookup[notification.iccid] || _('Unknown');
         providerCell.textContent = provider;
         row.appendChild(providerCell);
 
@@ -213,7 +213,7 @@ function processNotification(seqNumber) {
 
                     if (data.success) {
                         if (data.success && data.data) {
-                            var successMessage = data.data.message || 'Notification process completed successfully';
+                            var successMessage = data.data.message || _('Notification process completed successfully');
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
 
@@ -240,7 +240,7 @@ function processNotification(seqNumber) {
                                 errorMessage += ' (code: ' + data.error + ')';
                             }
                             if (!errorMessage) {
-                                errorMessage = 'Unknown error occurred';
+                                errorMessage = _('Unknown error occurred');
                             }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -255,7 +255,7 @@ function processNotification(seqNumber) {
                             errorMessage += (errorMessage ? ' - ' : '') + data.data;
                         }
                         if (!errorMessage) {
-                            errorMessage = 'Server error occurred';
+                            errorMessage = _('Server error occurred');
                         }
 
                         document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -263,12 +263,12 @@ function processNotification(seqNumber) {
                     }
 
                 } catch (e) {
-                    document.getElementById('download-error-message').textContent = 'Invalid response format';
+                    document.getElementById('download-error-message').textContent = _('Invalid response format');
                     var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     console.error('JSON parsing error:', e);
                 }
             } else {
-                document.getElementById('download-error-message').textContent = 'Failed to download profile (HTTP ' + xhr.status + ')';
+                document.getElementById('download-error-message').textContent = _('Failed to process notification (HTTP ') + xhr.status + ')';
                 var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
@@ -297,7 +297,7 @@ function removeNotification(seqNumber) {
 
                     if (data.success) {
                         if (data.success && data.data) {
-                            var successMessage = data.data.message || 'Notification process completed successfully';
+                            var successMessage = data.data.message || _('Notification process completed successfully');
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
 
@@ -323,7 +323,7 @@ function removeNotification(seqNumber) {
                                 errorMessage += ' (code: ' + data.error + ')';
                             }
                             if (!errorMessage) {
-                                errorMessage = 'Unknown error occurred';
+                                errorMessage = _('Unknown error occurred');
                             }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -338,7 +338,7 @@ function removeNotification(seqNumber) {
                             errorMessage += (errorMessage ? ' - ' : '') + data.data;
                         }
                         if (!errorMessage) {
-                            errorMessage = 'Server error occurred';
+                            errorMessage = _('Server error occurred');
                         }
 
                         document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -346,12 +346,12 @@ function removeNotification(seqNumber) {
                     }
 
                 } catch (e) {
-                    document.getElementById('download-error-message').textContent = 'Invalid response format';
+                    document.getElementById('download-error-message').textContent = _('Invalid response format');
                     var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     console.error('JSON parsing error:', e);
                 }
             } else {
-                document.getElementById('download-error-message').textContent = 'Failed to download profile (HTTP ' + xhr.status + ')';
+                document.getElementById('download-error-message').textContent = _('Failed to process notification (HTTP ') + xhr.status + ')';
                 var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
@@ -388,7 +388,7 @@ function processAllNotifications() {
 
                     if (data.success) {
                         if (data.success && data.data) {
-                            var successMessage = data.data.message || 'Notification process completed successfully';
+                            var successMessage = data.data.message || _('Notification process completed successfully');
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
 
@@ -414,7 +414,7 @@ function processAllNotifications() {
                                 errorMessage += ' (code: ' + data.error + ')';
                             }
                             if (!errorMessage) {
-                                errorMessage = 'Unknown error occurred';
+                                errorMessage = _('Unknown error occurred');
                             }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -429,7 +429,7 @@ function processAllNotifications() {
                             errorMessage += (errorMessage ? ' - ' : '') + data.data;
                         }
                         if (!errorMessage) {
-                            errorMessage = 'Server error occurred';
+                            errorMessage = _('Server error occurred');
                         }
 
                         document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -437,12 +437,12 @@ function processAllNotifications() {
                     }
 
                 } catch (e) {
-                    document.getElementById('download-error-message').textContent = 'Invalid response format';
+                    document.getElementById('download-error-message').textContent = _('Invalid response format');
                     var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     console.error('JSON parsing error:', e);
                 }
             } else {
-                document.getElementById('download-error-message').textContent = 'Failed to download profile (HTTP ' + xhr.status + ')';
+                document.getElementById('download-error-message').textContent = _('Failed to process notification (HTTP ') + xhr.status + ')';
                 var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
@@ -479,7 +479,7 @@ function processAllNotificationsAndRemove() {
 
                     if (data.success) {
                         if (data.success && data.data) {
-                            var successMessage = data.data.message || 'Notification process completed successfully';
+                            var successMessage = data.data.message || _('Notification process completed successfully');
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
 
@@ -505,7 +505,7 @@ function processAllNotificationsAndRemove() {
                                 errorMessage += ' (code: ' + data.error + ')';
                             }
                             if (!errorMessage) {
-                                errorMessage = 'Unknown error occurred';
+                                errorMessage = _('Unknown error occurred');
                             }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -520,7 +520,7 @@ function processAllNotificationsAndRemove() {
                             errorMessage += (errorMessage ? ' - ' : '') + data.data;
                         }
                         if (!errorMessage) {
-                            errorMessage = 'Server error occurred';
+                            errorMessage = _('Server error occurred');
                         }
 
                         document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -528,12 +528,12 @@ function processAllNotificationsAndRemove() {
                     }
 
                 } catch (e) {
-                    document.getElementById('download-error-message').textContent = 'Invalid response format';
+                    document.getElementById('download-error-message').textContent = _('Invalid response format');
                     var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     console.error('JSON parsing error:', e);
                 }
             } else {
-                document.getElementById('download-error-message').textContent = 'Failed to download profile (HTTP ' + xhr.status + ')';
+                document.getElementById('download-error-message').textContent = _('Failed to process notification (HTTP ') + xhr.status + ')';
                 var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
@@ -570,7 +570,7 @@ function removeAllNotifications() {
 
                     if (data.success) {
                         if (data.success && data.data) {
-                            var successMessage = data.data.message || 'Notification process completed successfully';
+                            var successMessage = data.data.message || _('Notification process completed successfully');
                             document.getElementById('notifications-success-message').textContent = successMessage;
                             var el = document.getElementById('notifications-success'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
 
@@ -597,7 +597,7 @@ function removeAllNotifications() {
                                 errorMessage += ' (code: ' + data.error + ')';
                             }
                             if (!errorMessage) {
-                                errorMessage = 'Unknown error occurred';
+                                errorMessage = _('Unknown error occurred');
                             }
 
                             document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -612,7 +612,7 @@ function removeAllNotifications() {
                             errorMessage += (errorMessage ? ' - ' : '') + data.data;
                         }
                         if (!errorMessage) {
-                            errorMessage = 'Server error occurred';
+                            errorMessage = _('Server error occurred');
                         }
 
                         document.getElementById('notifications-error-message').textContent = errorMessage;
@@ -620,12 +620,12 @@ function removeAllNotifications() {
                     }
 
                 } catch (e) {
-                    document.getElementById('download-error-message').textContent = 'Invalid response format';
+                    document.getElementById('download-error-message').textContent = _('Invalid response format');
                     var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
                     console.error('JSON parsing error:', e);
                 }
             } else {
-                document.getElementById('download-error-message').textContent = 'Failed to download profile (HTTP ' + xhr.status + ')';
+                document.getElementById('download-error-message').textContent = _('Failed to process notification (HTTP ') + xhr.status + ')';
                 var el = document.getElementById('download-error'); if (el) { el.classList.remove('hidden'); el.style.display = 'block'; }
             }
         }
