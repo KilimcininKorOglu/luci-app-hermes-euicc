@@ -367,3 +367,177 @@ msgstr "eSIM Profile Manager"
 
 msgid "optional"
 msgstr "optional"
+
+msgid "A reminder banner will appear and persist until you restart the modem."
+msgstr "A reminder banner will appear and persist until you restart the modem."
+
+msgid "Applying configuration"
+msgstr "Applying configuration"
+
+msgid "Applying configuration changes…"
+msgstr "Applying configuration changes…"
+
+msgid "Are you sure you want to delete the profile \"%s\"? This action cannot be undone."
+msgstr "Are you sure you want to delete the profile \"%s\"? This action cannot be undone."
+
+msgid "Are you sure you want to enable the profile \"%s\"?\\n\\nIMPORTANT: After enabling the profile, you will need to restart the modem for the changes to take effect. The profile will not be active until the modem is restarted."
+msgstr "Are you sure you want to enable the profile \"%s\"?\\n\\nIMPORTANT: After enabling the profile, you will need to restart the modem for the changes to take effect. The profile will not be active until the modem is restarted."
+
+msgid "Are you sure you want to process all notifications and remove them?"
+msgstr "Are you sure you want to process all notifications and remove them?"
+
+msgid "Are you sure you want to process all notifications?"
+msgstr "Are you sure you want to process all notifications?"
+
+msgid "Are you sure you want to remove all notifications? This action cannot be undone."
+msgstr "Are you sure you want to remove all notifications? This action cannot be undone."
+
+msgid "Change Nickname"
+msgstr "Change Nickname"
+
+msgid "Change eSIM profile requires a modem restart to take effect."
+msgstr "Change eSIM profile requires a modem restart to take effect."
+
+msgid "Clear Logs"
+msgstr "Clear Logs"
+
+msgid "Configure Hermes eUICC backend settings, device paths, and modem reboot methods"
+msgstr "Configure Hermes eUICC backend settings, device paths, and modem reboot methods"
+
+msgid "DELETE"
+msgstr "DELETE"
+
+msgid "DISABLE"
+msgstr "DISABLE"
+
+msgid "DISABLED"
+msgstr "DISABLED"
+
+msgid "Delete Profile"
+msgstr "Delete Profile"
+
+msgid "Disable"
+msgstr "Disable"
+
+msgid "Download a new eSIM profile using QR code, activation code, or SM-DS discovery"
+msgstr "Download a new eSIM profile using QR code, activation code, or SM-DS discovery"
+
+msgid "ENABLE"
+msgstr "ENABLE"
+
+msgid "ENABLED"
+msgstr "ENABLED"
+
+msgid "Enable"
+msgstr "Enable"
+
+msgid "Enter new profile nickname"
+msgstr "Enter new profile nickname"
+
+msgid "Failed to load image. Please try another file."
+msgstr "Failed to load image. Please try another file."
+
+msgid "INSTALL"
+msgstr "INSTALL"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Invalid LPA Address, check QR code again or enter eSIM detail manually"
+msgstr "Invalid LPA Address, check QR code again or enter eSIM detail manually"
+
+msgid "Later"
+msgstr "Later"
+
+msgid "Manage installed eSIM profiles - enable, disable, rename, or delete"
+msgstr "Manage installed eSIM profiles - enable, disable, rename, or delete"
+
+msgid "Manage pending eSIM notifications - process or remove notifications from your device"
+msgstr "Manage pending eSIM notifications - process or remove notifications from your device"
+
+msgid "Modem Restart Required"
+msgstr "Modem Restart Required"
+
+msgid "Modem is restarting... Time remaining: %d seconds"
+msgstr "Modem is restarting... Time remaining: %d seconds"
+
+msgid "No QR code found in the image. Please try a clearer image."
+msgstr "No QR code found in the image. Please try a clearer image."
+
+msgid "No internet connection detected. Do you want to check connectivity again before proceeding?"
+msgstr "No internet connection detected. Do you want to check connectivity again before proceeding?"
+
+msgid "No notifications to process"
+msgstr "No notifications to process"
+
+msgid "No notifications to remove"
+msgstr "No notifications to remove"
+
+msgid "Please enter a server and activation code or upload a QR code image"
+msgstr "Please enter a server and activation code or upload a QR code image"
+
+msgid "Please select an image file (JPG, PNG, etc.)"
+msgstr "Please select an image file (JPG, PNG, etc.)"
+
+msgid "Process"
+msgstr "Process"
+
+msgid "Process Now"
+msgstr "Process Now"
+
+msgid "Processing..."
+msgstr "Processing..."
+
+msgid "Profile \"%s\" has been enabled successfully!\\n\\nTo activate the profile, you need to restart the modem. Would you like to restart the modem now?"
+msgstr "Profile \"%s\" has been enabled successfully!\\n\\nTo activate the profile, you need to restart the modem. Would you like to restart the modem now?"
+
+msgid "Profile changes require a modem restart to take effect."
+msgstr "Profile changes require a modem restart to take effect."
+
+msgid "Refresh"
+msgstr "Refresh"
+
+msgid "Remove"
+msgstr "Remove"
+
+msgid "Removing..."
+msgstr "Removing..."
+
+msgid "Restart Complete"
+msgstr "Restart Complete"
+
+msgid "Restart Now"
+msgstr "Restart Now"
+
+msgid "Restarting Modem"
+msgstr "Restarting Modem"
+
+msgid "The modem has been restarted successfully. Reloading page..."
+msgstr "The modem has been restarted successfully. Reloading page..."
+
+msgid "The modem is being restarted. Please wait..."
+msgstr "The modem is being restarted. Please wait..."
+
+msgid "The modem will be restarted now. This operation will take about few minutes and you will lose the connection temporarily.\\n\\nContinue with the restart?"
+msgstr "The modem will be restarted now. This operation will take about few minutes and you will lose the connection temporarily.\\n\\nContinue with the restart?"
+
+msgid "The reminder will reappear when you reload the page until you restart the modem."
+msgstr "The reminder will reappear when you reload the page until you restart the modem."
+
+msgid "This page will reload automatically when the modem is ready."
+msgstr "This page will reload automatically when the modem is ready."
+
+msgid "To properly release the deleted eSIM, delete notifications must be processed as soon as possible.\\r\\nWarning: if you do not process the notification but delete it, the eSIM will no longer be reusable.\\r\\nDo you want to process them now?"
+msgstr "To properly release the deleted eSIM, delete notifications must be processed as soon as possible.\\r\\nWarning: if you do not process the notification but delete it, the eSIM will no longer be reusable.\\r\\nDo you want to process them now?"
+
+msgid "UNKNOWN"
+msgstr "UNKNOWN"
+
+msgid "View basic information and detailed chip specifications for your eSIM"
+msgstr "View basic information and detailed chip specifications for your eSIM"
+
+msgid "Working..."
+msgstr "Working..."
+
+msgid "eSIM Delete Notification Required"
+msgstr "eSIM Delete Notification Required"

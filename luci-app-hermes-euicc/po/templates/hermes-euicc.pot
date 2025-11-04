@@ -367,3 +367,177 @@ msgstr ""
 
 msgid "optional"
 msgstr ""
+
+msgid "A reminder banner will appear and persist until you restart the modem."
+msgstr ""
+
+msgid "Applying configuration"
+msgstr ""
+
+msgid "Applying configuration changes…"
+msgstr ""
+
+msgid "Are you sure you want to delete the profile \"%s\"? This action cannot be undone."
+msgstr ""
+
+msgid "Are you sure you want to enable the profile \"%s\"?\\n\\nIMPORTANT: After enabling the profile, you will need to restart the modem for the changes to take effect. The profile will not be active until the modem is restarted."
+msgstr ""
+
+msgid "Are you sure you want to process all notifications and remove them?"
+msgstr ""
+
+msgid "Are you sure you want to process all notifications?"
+msgstr ""
+
+msgid "Are you sure you want to remove all notifications? This action cannot be undone."
+msgstr ""
+
+msgid "Change Nickname"
+msgstr ""
+
+msgid "Change eSIM profile requires a modem restart to take effect."
+msgstr ""
+
+msgid "Clear Logs"
+msgstr ""
+
+msgid "Configure Hermes eUICC backend settings, device paths, and modem reboot methods"
+msgstr ""
+
+msgid "DELETE"
+msgstr ""
+
+msgid "DISABLE"
+msgstr ""
+
+msgid "DISABLED"
+msgstr ""
+
+msgid "Delete Profile"
+msgstr ""
+
+msgid "Disable"
+msgstr ""
+
+msgid "Download a new eSIM profile using QR code, activation code, or SM-DS discovery"
+msgstr ""
+
+msgid "ENABLE"
+msgstr ""
+
+msgid "ENABLED"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Enter new profile nickname"
+msgstr ""
+
+msgid "Failed to load image. Please try another file."
+msgstr ""
+
+msgid "INSTALL"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Invalid LPA Address, check QR code again or enter eSIM detail manually"
+msgstr ""
+
+msgid "Later"
+msgstr ""
+
+msgid "Manage installed eSIM profiles - enable, disable, rename, or delete"
+msgstr ""
+
+msgid "Manage pending eSIM notifications - process or remove notifications from your device"
+msgstr ""
+
+msgid "Modem Restart Required"
+msgstr ""
+
+msgid "Modem is restarting... Time remaining: %d seconds"
+msgstr ""
+
+msgid "No QR code found in the image. Please try a clearer image."
+msgstr ""
+
+msgid "No internet connection detected. Do you want to check connectivity again before proceeding?"
+msgstr ""
+
+msgid "No notifications to process"
+msgstr ""
+
+msgid "No notifications to remove"
+msgstr ""
+
+msgid "Please enter a server and activation code or upload a QR code image"
+msgstr ""
+
+msgid "Please select an image file (JPG, PNG, etc.)"
+msgstr ""
+
+msgid "Process"
+msgstr ""
+
+msgid "Process Now"
+msgstr ""
+
+msgid "Processing..."
+msgstr ""
+
+msgid "Profile \"%s\" has been enabled successfully!\\n\\nTo activate the profile, you need to restart the modem. Would you like to restart the modem now?"
+msgstr ""
+
+msgid "Profile changes require a modem restart to take effect."
+msgstr ""
+
+msgid "Refresh"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Removing..."
+msgstr ""
+
+msgid "Restart Complete"
+msgstr ""
+
+msgid "Restart Now"
+msgstr ""
+
+msgid "Restarting Modem"
+msgstr ""
+
+msgid "The modem has been restarted successfully. Reloading page..."
+msgstr ""
+
+msgid "The modem is being restarted. Please wait..."
+msgstr ""
+
+msgid "The modem will be restarted now. This operation will take about few minutes and you will lose the connection temporarily.\\n\\nContinue with the restart?"
+msgstr ""
+
+msgid "The reminder will reappear when you reload the page until you restart the modem."
+msgstr ""
+
+msgid "This page will reload automatically when the modem is ready."
+msgstr ""
+
+msgid "To properly release the deleted eSIM, delete notifications must be processed as soon as possible.\\r\\nWarning: if you do not process the notification but delete it, the eSIM will no longer be reusable.\\r\\nDo you want to process them now?"
+msgstr ""
+
+msgid "UNKNOWN"
+msgstr ""
+
+msgid "View basic information and detailed chip specifications for your eSIM"
+msgstr ""
+
+msgid "Working..."
+msgstr ""
+
+msgid "eSIM Delete Notification Required"
+msgstr ""
