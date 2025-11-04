@@ -365,6 +365,9 @@ msgstr ""
 msgid "eSIM Profile Manager"
 msgstr ""
 
+msgid "Hermes eSIM Manager"
+msgstr ""
+
 msgid "optional"
 msgstr ""
 

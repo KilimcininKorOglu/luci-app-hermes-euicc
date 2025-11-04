@@ -1,6 +1,6 @@
 {
 	"admin/modem/hermes-euicc": {
-		"title": "eSIM Profile Manager",
+		"title": "Hermes eSIM Manager",
 		"order": 60,
 		"action": {
 			"type": "cbi",

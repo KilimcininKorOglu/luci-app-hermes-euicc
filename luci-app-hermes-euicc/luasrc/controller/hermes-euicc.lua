@@ -10,7 +10,7 @@ local uci = require "luci.model.uci".cursor()
 
 function index()
     -- Main entry with tabs
-    local page = entry({"admin", "modem", "hermes-euicc"}, firstchild(), _("eSIM Manager"), 60)
+    local page = entry({"admin", "modem", "hermes-euicc"}, firstchild(), _("Hermes eSIM Manager"), 60)
     page.dependent = false
 
     -- Tab pages
