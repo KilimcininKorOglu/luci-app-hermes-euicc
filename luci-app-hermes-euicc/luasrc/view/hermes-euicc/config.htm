@@ -207,10 +207,16 @@
     // Initialize page when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(loadConfig, 100);
+            setTimeout(function() {
+                loadConfig();
+                loadAvailableDevices();
+            }, 100);
         });
     } else {
-        setTimeout(loadConfig, 100);
+        setTimeout(function() {
+            loadConfig();
+            loadAvailableDevices();
+        }, 100);
     }
 </script>
 
