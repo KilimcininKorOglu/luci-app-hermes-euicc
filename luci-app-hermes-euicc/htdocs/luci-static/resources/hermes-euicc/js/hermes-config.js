@@ -315,10 +315,18 @@ function saveConfig() {
     document.getElementById('config-error').style.display = 'none';
     document.getElementById('config-success').style.display = 'none';
 
-    // Show LuCI applying modal
-    ui.showModal(_('Applying configuration'), [
-        E('p', { 'class': 'spinning' }, _('Applying configuration changes…'))
-    ]);
+    // Show loading indicator
+    var loadingEl = document.getElementById('config-loading');
+    if (loadingEl) {
+        loadingEl.style.display = 'block';
+        loadingEl.classList.remove('hidden');
+    }
+
+    // Hide content during save
+    var contentEl = document.getElementById('config-content');
+    if (contentEl) {
+        contentEl.style.display = 'none';
+    }
 
     // Read all form data and organize it in the unified hermes-euicc structure
     var config = {
@@ -355,8 +363,18 @@ function saveConfig() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            // Hide modal
-            ui.hideModal();
+            // Hide loading indicator
+            var loadingEl = document.getElementById('config-loading');
+            if (loadingEl) {
+                loadingEl.style.display = 'none';
+            }
+
+            // Show content again
+            var contentEl = document.getElementById('config-content');
+            if (contentEl) {
+                contentEl.style.display = 'block';
+                contentEl.classList.remove('hidden');
+            }
 
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
