@@ -3,14 +3,7 @@
 		"title": "Hermes eSIM Manager",
 		"order": 60,
 		"action": {
-			"type": "cbi",
-			"path": "hermes-euicc",
-			"post": {
-				"cbi.submit": true
-			}
-		},
-		"depends": {
-			"acl": [ "luci-app-hermes-euicc" ]
+			"type": "firstchild"
 		}
 	}
 }
