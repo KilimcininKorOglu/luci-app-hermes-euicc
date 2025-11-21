@@ -342,17 +342,14 @@
     border: none !important;
 }
 
+/* 让主题自己处理 .cbi-value-title 的宽度，不覆盖主题默认样式 */
 .cbi-value-title {
-    display: inline-block;
-    width: 150px;
+    /* width: 已删除，使用主题默认值 */
     font-weight: bold;
-    vertical-align: top;
-    margin-top: 5px;
 }
 
 .cbi-value-field {
-    display: inline-block;
-    width: calc(100% - 170px);
+    /* width: 已删除，使用主题默认值 */
     min-width: 200px;
 }
 
@@ -830,10 +827,7 @@
         overflow-x: auto;
     }
 
-    .cbi-value-field {
-        width: calc(100% - 160px);
-        min-width: 150px;
-    }
+    /* 让主题自己处理响应式布局 */
 
     .profile-status,
     .profile-action-btn,

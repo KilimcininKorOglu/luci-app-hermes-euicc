@@ -21,23 +21,23 @@
 <div class="cbi-map-descr"><%:Manage installed eSIM profiles - enable, disable, rename, or delete%></div>
 
 <div id="profiles-loading" class="loading-container">
-    <img src="<%=resource%>/hermes-euicc/icons/loading.gif" alt="Loading" class="v-align-middle" />
-    Loading profiles...
+    <img src="<%=resource%>/hermes-euicc/icons/loading.gif" alt="<%:Loading%>" class="v-align-middle" />
+    <%:Loading profiles...%>
 </div>
 
 <div id="profiles-content" class="hidden">
     <fieldset class="cbi-section">
-        <legend>Installed Profiles</legend>
+        <legend><%:Installed Profiles%></legend>
         <div class="cbi-section-node">
             <div class="table-responsive">
                 <table class="cbi-section-table" id="profiles-table">
                     <thead>
                         <tr class="cbi-section-table-titles">
-                            <th class="cbi-section-table-cell">Profile Name</th>
-                            <th class="cbi-section-table-cell">ICCID</th>
-                            <th class="cbi-section-table-cell">Provider</th>
-                            <th class="cbi-section-table-cell table-cell-center">Status</th>
-                            <th class="cbi-section-table-cell table-cell-center table-cell-min-width">Actions</th>
+                            <th class="cbi-section-table-cell"><%:Profile Name%></th>
+                            <th class="cbi-section-table-cell"><%:ICCID%></th>
+                            <th class="cbi-section-table-cell"><%:Provider%></th>
+                            <th class="cbi-section-table-cell table-cell-center"><%:Status%></th>
+                            <th class="cbi-section-table-cell table-cell-center table-cell-min-width"><%:Actions%></th>
                         </tr>
                     </thead>
                     <tbody id="profiles-tbody">
@@ -47,14 +47,14 @@
 
 
             <div id="no-profiles" class="no-items-message">
-                No profiles installed
+                <%:No profiles installed%>
             </div>
         </div>
     </fieldset>
 </div>
 
 <div id="profiles-error" class="error-message">
-    <strong>Error:</strong> <span id="profiles-error-message"></span>
+    <strong><%:Error%>:</strong> <span id="profiles-error-message"></span>
 </div>
 
 <div id="profile-notifications-status" class="mt-20">

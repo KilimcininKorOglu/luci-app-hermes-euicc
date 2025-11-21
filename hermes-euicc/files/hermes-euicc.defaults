@@ -1,0 +1,8 @@
+#!/bin/sh
+# UCI 配置已通过配置文件安装，此脚本仅用于显示安装信息
+
+echo "Hermes eUICC Manager installed successfully!"
+echo "Configuration file: /etc/config/hermes-euicc"
+echo "Usage: hermes-euicc --help"
+
+exit 0

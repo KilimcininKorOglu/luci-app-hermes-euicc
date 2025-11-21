@@ -1,0 +1,847 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-11-07 23:25+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "A reminder banner will appear and persist until you restart the modem."
+msgstr "提醒横幅将会出现并持续显示，直到您重启调制解调器。"
+
+msgid "Are you sure you want to delete the profile \"%s\"? This action cannot be undone."
+msgstr "确定要删除配置文件\"%s\"吗？此操作无法撤销。"
+
+msgid ""
+"Are you sure you want to enable the profile \"%s\"?\\n"
+"\\n"
+"IMPORTANT: After enabling the profile, you will need to restart the modem "
+"for the changes to take effect. The profile will not be active until the "
+"modem is restarted."
+msgstr ""
+"确定要启用配置文件\"%s\"吗？\\n"
+"\\n"
+"重要提示：启用配置文件后，您需要重启调制解调器以使更改生效。在重启调制解调器"
+"之前，配置文件不会激活。"
+
+msgid "Are you sure you want to process all notifications?"
+msgstr "确定要处理所有通知吗？"
+
+msgid "Are you sure you want to process all notifications and remove them?"
+msgstr "确定要处理并删除所有通知吗？"
+
+msgid "Are you sure you want to remove all notifications? This action cannot be undone."
+msgstr "确定要删除所有通知吗？此操作无法撤销。"
+
+msgid "AT device path must start with /dev/"
+msgstr "AT 设备路径必须以 /dev/ 开头"
+
+msgid "Available:"
+msgstr "可用空间："
+
+msgid "BER-TLV Support"
+msgstr "BER-TLV 支持"
+
+msgid "Capabilities"
+msgstr "功能特性"
+
+msgid "Change eSIM profile requires a modem restart to take effect."
+msgstr "更改 eSIM 配置文件需要重启调制解调器才能生效。"
+
+msgid "Change Nickname"
+msgstr "修改昵称"
+
+msgid "Clear Logs"
+msgstr "清除日志"
+
+msgid "Configuration saved successfully"
+msgstr "配置保存成功"
+
+msgid "Contactless Support"
+msgstr "非接触式支持"
+
+msgid "Custom"
+msgstr "自定义"
+
+msgid "Custom - Manual Entry"
+msgstr "自定义 - 手动输入"
+
+msgid "DELETE"
+msgstr "删除"
+
+msgid "Delete Profile"
+msgstr "删除配置文件"
+
+msgid "Disable"
+msgstr "禁用"
+
+msgid "DISABLE"
+msgstr "禁用"
+
+msgid "DISABLED"
+msgstr "已禁用"
+
+msgid "Discovery failed"
+msgstr "发现失败"
+
+msgid "Do you want to continue anyway?"
+msgstr "仍然要继续吗？"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "ENABLE"
+msgstr "启用"
+
+msgid "ENABLED"
+msgstr "已启用"
+
+msgid "Enter new profile nickname"
+msgstr "输入新的配置文件昵称"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Error during restart"
+msgstr "重启过程中出错"
+
+msgid "eSIM Delete Notification Required"
+msgstr "需要 eSIM 删除通知"
+
+msgid "Failed to change profile name"
+msgstr "修改配置文件名称失败"
+
+msgid "Failed to delete profile"
+msgstr "删除配置文件失败"
+
+msgid "Failed to download profile (HTTP "
+msgstr "下载配置文件失败 (HTTP "
+
+msgid "Failed to load chip information"
+msgstr "加载芯片信息失败"
+
+msgid "Failed to load chip information (HTTP "
+msgstr "加载芯片信息失败 (HTTP "
+
+msgid "Failed to load configuration"
+msgstr "加载配置失败"
+
+msgid "Failed to load eSIM information"
+msgstr "加载 eSIM 信息失败"
+
+msgid "Failed to load image. Please try another file."
+msgstr "加载图片失败。请尝试其他文件。"
+
+msgid "Failed to load notifications"
+msgstr "加载通知失败"
+
+msgid "Failed to load profiles"
+msgstr "加载配置文件失败"
+
+msgid "Failed to parse response"
+msgstr "解析响应失败"
+
+msgid "Failed to process notification (HTTP "
+msgstr "处理通知失败 (HTTP "
+
+msgid "Failed to restart modem. Please try manually from System → Reboot."
+msgstr "重启调制解调器失败。请从系统 → 重启手动尝试。"
+
+msgid "Failed to save configuration"
+msgstr "保存配置失败"
+
+msgid "Failed to toggle profile"
+msgstr "切换配置文件失败"
+
+msgid "Firmware:"
+msgstr "固件版本："
+
+msgid "Free RAM:"
+msgstr "可用内存："
+
+msgid "Free Storage:"
+msgstr "可用存储："
+
+msgid "Generic Bootstrapping Architecture"
+msgstr "通用引导架构"
+
+msgid "GlobalPlatform:"
+msgstr "GlobalPlatform："
+
+msgid "INSTALL"
+msgstr "安装"
+
+msgid "Installed Apps:"
+msgstr "已安装应用："
+
+msgid "Invalid LPA Address, check QR code again or enter eSIM detail manually"
+msgstr "LPA 地址无效，请重新检查二维码或手动输入 eSIM 详细信息"
+
+msgid "Invalid response format"
+msgstr "响应格式无效"
+
+msgid "ISIM Support"
+msgstr "ISIM 支持"
+
+msgid "JavaCard Support"
+msgstr "JavaCard 支持"
+
+msgid "Later"
+msgstr "稍后"
+
+msgid "MBIM device path must start with /dev/"
+msgstr "MBIM 设备路径必须以 /dev/ 开头"
+
+msgid "minimum"
+msgstr "最小值"
+
+msgid "Modem is restarting... Time remaining: %d seconds"
+msgstr "调制解调器正在重启... 剩余时间：%d 秒"
+
+msgid "Modem Restart Required"
+msgstr "需要重启调制解调器"
+
+msgid "Multiple USIM Support"
+msgstr "多 USIM 支持"
+
+msgid "No devices found"
+msgstr "未找到设备"
+
+msgid "No internet connection detected. Do you want to check connectivity again before proceeding?"
+msgstr "未检测到互联网连接。是否要在继续之前再次检查连接？"
+
+msgid "No notifications to process"
+msgstr "没有要处理的通知"
+
+msgid "No notifications to remove"
+msgstr "没有要删除的通知"
+
+msgid "No profiles available for this device from SM-DS."
+msgstr "SM-DS 中没有此设备可用的配置文件。"
+
+msgid "No QR code found in the image. Please try a clearer image."
+msgstr "图片中未找到二维码。请尝试更清晰的图片。"
+
+msgid "Not available"
+msgstr "不可用"
+
+msgid "Notification process completed successfully"
+msgstr "通知处理成功完成"
+
+msgid "Output Logs"
+msgstr "输出日志"
+
+msgid "Please enter a server and activation code or upload a QR code image"
+msgstr "请输入服务器和激活码或上传二维码图片"
+
+msgid "Please select an image file (JPG, PNG, etc.)"
+msgstr "请选择图片文件（JPG、PNG 等）"
+
+msgid "Process"
+msgstr "处理"
+
+msgid "Processing..."
+msgstr "处理中..."
+
+msgid "Process Now"
+msgstr "立即处理"
+
+msgid "Profile changes require a modem restart to take effect."
+msgstr "配置文件更改需要重启调制解调器才能生效。"
+
+msgid "Profile download completed successfully"
+msgstr "配置文件下载成功完成"
+
+msgid "Profile downloaded successfully! Please reboot modem to activate."
+msgstr "配置文件下载成功！请重启调制解调器以激活。"
+
+msgid "Profile installation may fail due to insufficient storage."
+msgstr "由于存储空间不足，配置文件安装可能会失败。"
+
+msgid ""
+"Profile \"%s\" has been enabled successfully!\\n"
+"\\n"
+"To activate the profile, you need to restart the modem. Would you like to "
+"restart the modem now?"
+msgstr ""
+"配置文件\"%s\"已成功启用！\\n"
+"\\n"
+"要激活配置文件，您需要重启调制解调器。是否现在重启调制解调器？"
+
+msgid "Profile Version:"
+msgstr "配置文件版本："
+
+msgid "QMI device path must start with /dev/"
+msgstr "QMI 设备路径必须以 /dev/ 开头"
+
+msgid "QMI SIM slot must be 1 or 2"
+msgstr "QMI SIM 卡槽必须是 1 或 2"
+
+msgid "Recommended:"
+msgstr "推荐值："
+
+msgid "Remove"
+msgstr "删除"
+
+msgid "Removing..."
+msgstr "删除中..."
+
+msgid "Request failed (HTTP "
+msgstr "请求失败 (HTTP "
+
+msgid "Restart Complete"
+msgstr "重启完成"
+
+msgid "Restarting Modem"
+msgstr "正在重启调制解调器"
+
+msgid "Restart Now"
+msgstr "立即重启"
+
+msgid "Server error occurred"
+msgstr "服务器错误"
+
+msgid "SGP.22 Version:"
+msgstr "SGP.22 版本："
+
+msgid "Storage Information"
+msgstr "存储信息"
+
+msgid "The modem has been restarted successfully. Reloading page..."
+msgstr "调制解调器已成功重启。正在重新加载页面..."
+
+msgid "The modem is being restarted. Please wait..."
+msgstr "调制解调器正在重启。请稍候..."
+
+msgid ""
+"The modem will be restarted now. This operation will take about few minutes "
+"and you will lose the connection temporarily.\\n"
+"\\n"
+"Continue with the restart?"
+msgstr ""
+"调制解调器将立即重启。此操作大约需要几分钟，您将暂时失去连接。\\n"
+"\\n"
+"继续重启吗？"
+
+msgid "The reminder will reappear when you reload the page until you restart the modem."
+msgstr "在您重启调制解调器之前，重新加载页面时提醒将再次出现。"
+
+msgid "This page will reload automatically when the modem is ready."
+msgstr "当调制解调器准备就绪时，此页面将自动重新加载。"
+
+msgid ""
+"To properly release the deleted eSIM, delete notifications must be "
+"processed as soon as possible.\\r\\n"
+"Warning: if you do not process the notification but delete it, the eSIM "
+"will no longer be reusable.\\r\\n"
+"Do you want to process them now?"
+msgstr ""
+"要正确释放已删除的 eSIM，必须尽快处理删除通知。\\r\\n"
+"警告：如果您不处理通知而是删除它，eSIM 将无法再次使用。\\r\\n"
+"是否现在处理？"
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "UNKNOWN"
+msgstr "未知"
+
+msgid "Unknown error"
+msgstr "未知错误"
+
+msgid "Unknown error occurred"
+msgstr "发生未知错误"
+
+msgid "Unknown Provider"
+msgstr "未知运营商"
+
+msgid "Used"
+msgstr "已用"
+
+msgid "USIM Support"
+msgstr "USIM 支持"
+
+msgid "Version Information"
+msgstr "版本信息"
+
+msgid "Warning: Low storage!"
+msgstr "警告：存储空间不足！"
+
+msgid "Working..."
+msgstr "工作中..."
+
+msgid "View basic information and detailed chip specifications for your eSIM"
+msgstr "查看您的 eSIM 的基本信息和详细芯片规格"
+
+msgid "Manage installed eSIM profiles - enable, disable, rename, or delete"
+msgstr "管理已安装的 eSIM 配置文件 - 启用、禁用、重命名或删除"
+
+msgid "Download a new eSIM profile using QR code, activation code, or SM-DS discovery"
+msgstr "使用二维码、激活码或 SM-DS 发现下载新的 eSIM 配置文件"
+
+msgid "No activation code? Let us automatically discover and download available profiles from SM-DS!"
+msgstr "没有激活码？让我们自动从 SM-DS 发现并下载可用的配置文件！"
+
+msgid "Manage pending eSIM notifications - process or remove notifications from your device"
+msgstr "管理待处理的 eSIM 通知 - 处理或删除设备上的通知"
+
+msgid "Configure Hermes eUICC backend settings, device paths, and modem reboot methods"
+msgstr "配置 Hermes eUICC 后端设置、设备路径和调制解调器重启方法"
+
+msgid "Enable bulk selection and processing of multiple notifications at once"
+msgstr "启用批量选择和一次处理多个通知"
+
+msgid "Error: unexpected response: 6D00"
+msgstr "错误：意外响应：6D00"
+
+msgid "unexpected response: 6D00"
+msgstr "意外响应：6D00"
+
+msgid "Leave empty to use default GSMA SM-DS server"
+msgstr "留空以使用默认的 GSMA SM-DS 服务器"
+
+msgid "Required for some operators"
+msgstr "某些运营商需要此项"
+
+msgid "DISCOVER & DOWNLOAD"
+msgstr "发现并下载"
+
+msgid "Hermes eSIM Manager"
+msgstr "Hermes eSIM 管理器"
+
+msgid "Checking connectivity..."
+msgstr "正在检查连接..."
+
+msgid "Internet connection available"
+msgstr "互联网连接可用"
+
+msgid "No internet connection"
+msgstr "无互联网连接"
+
+msgid "Check Again"
+msgstr "重新检查"
+
+msgid "Sequence Number"
+msgstr "序列号"
+
+msgid "ICCID"
+msgstr "ICCID"
+
+msgid "Provider"
+msgstr "运营商"
+
+msgid "Operation"
+msgstr "操作"
+
+msgid "Actions"
+msgstr "操作"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Profile Name"
+msgstr "配置文件名称"
+
+msgid "Service Provider"
+msgstr "服务提供商"
+
+msgid "EID"
+msgstr "EID"
+
+msgid "Basic Information"
+msgstr "基本信息"
+
+msgid "Memory Information"
+msgstr "内存信息"
+
+msgid "Detailed Chip Information"
+msgstr "详细芯片信息"
+
+msgid "Click to view detailed chip specifications"
+msgstr "点击查看详细芯片规格"
+
+msgid "Hide Details"
+msgstr "隐藏详情"
+
+msgid "Show Details"
+msgstr "显示详情"
+
+msgid "Loading chip information..."
+msgstr "正在加载芯片信息..."
+
+msgid "Download Profile"
+msgstr "下载配置文件"
+
+msgid "Upload QR Code Image"
+msgstr "上传二维码图片"
+
+msgid "Choose File"
+msgstr "选择文件"
+
+msgid "Clear"
+msgstr "清除"
+
+msgid "Decoding QR code..."
+msgstr "正在解码二维码..."
+
+msgid "QR code decoded successfully"
+msgstr "二维码解码成功"
+
+msgid "OR enter details manually"
+msgstr "或手动输入详细信息"
+
+msgid "SM-DP+ Server Address"
+msgstr "SM-DP+ 服务器地址"
+
+msgid "Activation Code"
+msgstr "激活码"
+
+msgid "Confirmation Code (Optional)"
+msgstr "确认码（可选）"
+
+msgid "Download"
+msgstr "下载"
+
+msgid "Downloading profile..."
+msgstr "正在下载配置文件..."
+
+msgid "SM-DS Discovery"
+msgstr "SM-DS 发现"
+
+msgid "SM-DS Server (Optional)"
+msgstr "SM-DS 服务器（可选）"
+
+msgid "IMEI (Optional)"
+msgstr "IMEI（可选）"
+
+msgid "Discover & Download"
+msgstr "发现并下载"
+
+msgid "Discovering profiles..."
+msgstr "正在发现配置文件..."
+
+msgid "Backend Settings"
+msgstr "后端设置"
+
+msgid "APDU Backend"
+msgstr "APDU 后端"
+
+msgid "Auto-detect"
+msgstr "自动检测"
+
+msgid "AT Commands"
+msgstr "AT 命令"
+
+msgid "QMI Protocol"
+msgstr "QMI 协议"
+
+msgid "MBIM Protocol"
+msgstr "MBIM 协议"
+
+msgid "AT Device"
+msgstr "AT 设备"
+
+msgid "QMI Device"
+msgstr "QMI 设备"
+
+msgid "QMI SIM Slot"
+msgstr "QMI SIM 卡槽"
+
+msgid "MBIM Device"
+msgstr "MBIM 设备"
+
+msgid "MBIM Proxy"
+msgstr "MBIM 代理"
+
+msgid "Enabled"
+msgstr "已启用"
+
+msgid "Disabled"
+msgstr "已禁用"
+
+msgid "Modem Reboot Settings"
+msgstr "调制解调器重启设置"
+
+msgid "Reboot Method"
+msgstr "重启方法"
+
+msgid "AT Command"
+msgstr "AT 命令"
+
+msgid "QMI"
+msgstr "QMI"
+
+msgid "MBIM"
+msgstr "MBIM"
+
+msgid "Custom Command"
+msgstr "自定义命令"
+
+msgid "AT Reboot Command"
+msgstr "AT 重启命令"
+
+msgid "AT Reboot Device"
+msgstr "AT 重启设备"
+
+msgid "QMI Reboot Device"
+msgstr "QMI 重启设备"
+
+msgid "QMI Reboot Slot"
+msgstr "QMI 重启卡槽"
+
+msgid "MBIM Reboot Device"
+msgstr "MBIM 重启设备"
+
+msgid "Custom Reboot Command"
+msgstr "自定义重启命令"
+
+msgid "Advanced Settings"
+msgstr "高级设置"
+
+msgid "Enable JSON Output Logs"
+msgstr "启用 JSON 输出日志"
+
+msgid "Enable Bulk Notification Actions"
+msgstr "启用批量通知操作"
+
+msgid "Save Configuration"
+msgstr "保存配置"
+
+msgid "Saving configuration..."
+msgstr "正在保存配置..."
+
+msgid "Loading configuration..."
+msgstr "正在加载配置..."
+
+msgid "Process All"
+msgstr "全部处理"
+
+msgid "Process & Remove All"
+msgstr "处理并删除全部"
+
+msgid "Remove All"
+msgstr "全部删除"
+
+msgid "No profiles found"
+msgstr "未找到配置文件"
+
+msgid "No notifications found"
+msgstr "未找到通知"
+
+msgid "Loading profiles..."
+msgstr "正在加载配置文件..."
+
+msgid "Loading notifications..."
+msgstr "正在加载通知..."
+
+msgid "Loading eSIM information..."
+msgstr "正在加载 eSIM 信息..."
+
+msgid "Installed Profiles"
+msgstr "已安装的配置文件"
+
+msgid "No profiles installed"
+msgstr "未安装配置文件"
+
+msgid "Pending Notifications"
+msgstr "待处理的通知"
+
+msgid "No pending notifications"
+msgstr "无待处理的通知"
+
+msgid "Quick Download from SM-DS"
+msgstr "从 SM-DS 快速下载"
+
+msgid "Searching for profiles and downloading..."
+msgstr "正在搜索并下载配置文件..."
+
+msgid "Success"
+msgstr "成功"
+
+msgid "Info"
+msgstr "信息"
+
+msgid "OR"
+msgstr "或"
+
+msgid "QR Code Upload"
+msgstr "上传二维码"
+
+msgid "QR Code Image"
+msgstr "二维码图片"
+
+msgid "Upload a JPG or PNG image containing the QR code - it will be decoded automatically"
+msgstr "上传包含二维码的 JPG 或 PNG 图片 - 将自动解码"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "QR Code decoded successfully!"
+msgstr "二维码解码成功！"
+
+msgid "QR Activation Code"
+msgstr "二维码激活码"
+
+msgid "Manual Download"
+msgstr "手动下载"
+
+msgid "Enter SM-DP+ server address"
+msgstr "输入 SM-DP+ 服务器地址"
+
+msgid "Enter Activation Code"
+msgstr "输入激活码"
+
+msgid "Optional Confirmation Code"
+msgstr "可选确认码"
+
+msgid "Clear All"
+msgstr "全部清除"
+
+msgid "Global Settings"
+msgstr "全局设置"
+
+msgid "Auto"
+msgstr "自动"
+
+msgid "AT"
+msgstr "AT"
+
+msgid "QMI"
+msgstr "QMI"
+
+msgid "MBIM"
+msgstr "MBIM"
+
+msgid "Select which APDU backend will be used for eSIM communication"
+msgstr "选择用于 eSIM 通信的 APDU 后端"
+
+msgid "Enable Output Logs"
+msgstr "启用输出日志"
+
+msgid "Enable JSON Output on Download and Notifications Tabs"
+msgstr "在下载和通知标签页启用 JSON 输出"
+
+msgid "Bulk Notification Processing"
+msgstr "批量通知处理"
+
+msgid "Device Settings"
+msgstr "设备设置"
+
+msgid "Loading devices..."
+msgstr "正在加载设备..."
+
+msgid "Serial port device used by AT APDU backend"
+msgstr "AT APDU 后端使用的串口设备"
+
+msgid "QMI device used by QMI APDU backend"
+msgstr "QMI APDU 后端使用的 QMI 设备"
+
+msgid "Slot 1"
+msgstr "卡槽 1"
+
+msgid "Slot 2"
+msgstr "卡槽 2"
+
+msgid "SIM slot number for QMI operations (1 or 2)"
+msgstr "QMI 操作的 SIM 卡槽号（1 或 2）"
+
+msgid "MBIM device used by MBIM APDU backend"
+msgstr "MBIM APDU 后端使用的 MBIM 设备"
+
+msgid "Use MBIM Proxy"
+msgstr "使用 MBIM 代理"
+
+msgid "optional"
+msgstr "可选"
+
+msgid "Checking internet connection..."
+msgstr "正在检查互联网连接..."
+
+msgid "You can manage eSIM profiles"
+msgstr "您可以管理 eSIM 配置文件"
+
+msgid "No internet connection detected"
+msgstr "未检测到互联网连接"
+
+msgid "An internet connection is required to download and manage eSIM profiles. Please check your WAN connection."
+msgstr "下载和管理 eSIM 配置文件需要互联网连接。请检查您的 WAN 连接。"
+
+msgid "eSIM Profile Manager"
+msgstr "eSIM 配置文件管理器"
+
+msgid "Manage eSIM profiles using Hermes eUICC"
+msgstr "使用 Hermes eUICC 管理 eSIM 配置文件"
+
+msgid "eSIM Info"
+msgstr "eSIM 信息"
+
+msgid "Profiles"
+msgstr "配置文件"
+
+msgid "Configuration"
+msgstr "配置"
+
+msgid "Profile Version"
+msgstr "配置文件版本"
+
+msgid "SVN"
+msgstr "SVN"
+
+msgid "Firmware Version"
+msgstr "固件版本"
+
+msgid "Free Non-Volatile Memory"
+msgstr "可用非易失性内存"
+
+msgid "Free Volatile Memory"
+msgstr "可用易失性内存"
+
+msgid "Installed Applications"
+msgstr "已安装应用"
+
+msgid "Loading"
+msgstr "加载中"
+
+msgid "Refresh"
+msgstr "刷新"
+
+msgid "Sequence"
+msgstr "序列"
+
+msgid "Process and Remove All"
+msgstr "处理并删除全部"
+
+msgid "Confirmation Code:"
+msgstr "确认码："
+
+msgid "Choose how to restart the modem when eSIM profiles are enabled"
+msgstr "选择启用 eSIM 配置文件时如何重启调制解调器"
+
+msgid "AT Reset Command"
+msgstr "AT 重置命令"
+
+msgid "AT command to reset the modem (default: AT+CFUN=1,1)"
+msgstr "用于重置调制解调器的 AT 命令（默认：AT+CFUN=1,1）"
+
+msgid "AT Device for Reboot"
+msgstr "用于重启的 AT 设备"
+
+msgid "Serial port device used for SIM power cycle"
+msgstr "用于 SIM 卡电源循环的串口设备"
+
+msgid "SM-DS Server"
+msgstr "SM-DS 服务器"
+
+msgid "Confirmation Code"
+msgstr "确认码"
+
+msgid "Notifications"
+msgstr "通知"
